@@ -24,11 +24,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   image: {
-    width: 394,
-    height: 402,
+    width: 300,
+    height: 300,
     position: 'absolute',
-    top: 56,
-    left: -9,
+    top: 200,
   },
 });
 
