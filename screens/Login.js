@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: '#000',
-    fontFamily: 'Heebo',
     fontSize: 30,
     fontWeight: '700',
     lineHeight: 30,
