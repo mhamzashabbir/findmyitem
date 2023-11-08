@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import GetStarted from './screens/GetStarted';
+import GetStarted from '../screens/GetStarted';
 
 const Stack = createStackNavigator();
 
@@ -15,3 +15,5 @@ const Navigation = () => {
     </Stack.Navigator>
   );
 }
+
+export default Navigation;
