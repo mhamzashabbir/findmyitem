@@ -1,7 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import GetStarted from '../screens/GetStarted';
 import Login from '../screens/Login';
-import Sprint from '../screens/Sprint';
 
 const Stack = createStackNavigator();
 
