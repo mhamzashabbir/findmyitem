@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import StartPage from './screens/Sprint';
-import Navigation from './navigations/navigation';
+import Navigation from './navigations/Navigation';
 
 const Stack = createStackNavigator();
 

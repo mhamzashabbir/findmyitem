@@ -15,3 +15,5 @@ const Navigation = () => {
     </Stack.Navigator>
   );
 }
+
+export default Navigation;
