@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 import CustomButton from '../components/CustomButton';
 
-const StartPage = () => {
+const StartPage = ({navigation}) => {
 
   const handleButton = () => {
-    console.log('Button pressed');
+    navigation.navigate('Login');
   }
 
   return (
