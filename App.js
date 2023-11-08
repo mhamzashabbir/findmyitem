@@ -2,9 +2,13 @@ import {useState , useEffect} from 'react';
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import StartPage from './screens/Sprint';
-import GetStarted from './screens/GetStarted';
+import Navigation from './navigations/navigation';
+
+const Stack = createStackNavigator();
 
 export default function App() {
 
@@ -23,13 +27,9 @@ export default function App() {
   }
 
   return (
-    <View>
-      {/* <StartPage /> */}
-      <GetStarted />
-      {/* <Login /> */}
-      <StatusBar style="auto" />
-    </View>
-
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
   );
 }
 
