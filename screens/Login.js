@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
 import CustomButton from '../components/CustomButton';
 
@@ -11,14 +12,23 @@ const Checkbox = ({ checked, onChange }) => (
   </Pressable>
 );
 
-const LoginScreen = () => {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     // Implement your login logic here
   };
+
+  const handleSignup = () => {
+    navigation.navigate('SignUp');
+  };
+
+  const handleForget = () => {
+    navigation.navigate('ResetPasswordStart');
+  }
 
   return (
     <View style={styles.container}>
@@ -26,38 +36,47 @@ const LoginScreen = () => {
 
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your Email"
-          value={email}
-          onChangeText={text => setEmail(text)}
-        />
+        <View style={styles.inputWithIcon}>
+          <MaterialIcons name="email" size={24} color="black" style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your Email"
+            value={email}
+            onChangeText={text => setEmail(text)}
+          />
+        </View>
       </View>
 
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your Password"
-          secureTextEntry={true}
-          value={password}
-          onChangeText={text => setPassword(text)}
-        />
+        <View style={styles.inputWithIcon}>
+          <MaterialIcons name="lock" size={24} color="black" style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your Password"
+            secureTextEntry={!showPassword} // Toggle secureTextEntry
+            value={password}
+            onChangeText={text => setPassword(text)}
+          />
+          <Pressable onPress={() => setShowPassword(!showPassword)}>
+            <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="black" style={styles.showPasswordIcon} />
+          </Pressable>
+        </View>
       </View>
 
       <View style={styles.checkboxContainer}>
         <Checkbox checked={rememberMe} onChange={() => setRememberMe(!rememberMe)} />
         <Text style={styles.checkboxText}>Remember Me</Text>
-        <Pressable>
+        <Pressable onPress={handleForget}>
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </Pressable>
       </View>
 
-      <CustomButton text="Login" margin={40} handleButton={handleLogin}/>
+      <CustomButton text="Login" margin={40} handleButton={handleLogin} />
 
       <View style={styles.signUpContainer}>
         <Text style={styles.signUpText}>Don't have an account?</Text>
-        <Pressable>
+        <Pressable onPress={handleSignup}>
           <Text style={styles.signUpLink}>Sign Up</Text>
         </Pressable>
       </View>
@@ -73,7 +92,6 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: '#000',
-    fontFamily: 'Heebo',
     fontSize: 30,
     fontWeight: '700',
     lineHeight: 30,
@@ -84,7 +102,7 @@ const styles = StyleSheet.create({
     width: 339,
     height: 56,
     marginTop: 20,
-    marginBottom: 30
+    marginBottom: 40
   },
   label: {
     fontSize: 25,
@@ -93,18 +111,32 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   input: {
-    width: '90%',
-    height: '90%',
+    width: '70%',
+    height: '70%',
     backgroundColor: '#97FEED',
     borderRadius: 20,
     paddingHorizontal: 16,
     marginHorizontal: 16,
+    marginLeft: 0,
+  },
+  inputWithIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '90%',
+    height: '90%',
+    marginLeft: 20,
+    backgroundColor: '#97FEED',
+    borderRadius: 20,
+    marginTop: 10,
   },
   checkboxContainer: {
     flexDirection: 'row',
     width: 300,
     marginHorizontal: 16,
     marginTop: 20,
+  },
+  icon: {
+    marginLeft: 10,
   },
   checkbox: {
     width: 24,
@@ -134,20 +166,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginLeft: 40,
   },
-  loginButton: {
-    backgroundColor: '#0B666A',
-    width: 244,
-    height: 54,
-    borderRadius: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-  },
-  loginButtonText: {
-    color: '#000',
-    fontSize: 20,
-    fontWeight: '700',
-  },
   signUpContainer: {
     flexDirection: 'row',
     marginTop: 20,
@@ -163,6 +181,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginLeft: 5,
   },
+  showPasswordIcon: {
+    marginLeft: 10,
+  },
 });
 
-export default LoginScreen;
+export default Login;
