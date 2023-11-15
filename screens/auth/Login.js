@@ -12,6 +12,7 @@ const Checkbox = ({ checked, onChange }) => (
   </Pressable>
 );
 
+
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +20,7 @@ const Login = ({navigation}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    // Implement your login logic here
+    navigation.replace('MainTab');
   };
 
   const handleSignup = () => {

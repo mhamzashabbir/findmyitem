@@ -1,18 +1,19 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import GetStarted from '../screens/main/GetStarted';
 import Login from '../screens/auth/Login';
 import SignUp from '../screens/auth/SignUp';
 import ResetPasswordStart from '../screens/auth/ResetPasswordStart';
 import ResetPasswordConfirm from '../screens/auth/ResetPasswordConfirm';
 import CodeVerification from '../screens/auth/CodeVerification.js';
+import Home from '../screens/main/home/HomeScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-export const AuthStack = () => {
+const AuthStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="GetStarted">
@@ -47,18 +48,19 @@ export const AuthStack = () => {
         options={{ headerShown: false , title: 'Reset Password' , headerTitleAlign: 'center', headerStyle: {backgroundColor: '#97FEED'}     }}
       />
     </Stack.Navigator>
-  );
+);
 }
+
 
 const HomeStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
 
-const PostsStack = () => {
+const PostStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Posts" component={Login} options={{ headerShown: false }} />
@@ -69,17 +71,17 @@ const PostsStack = () => {
 const ProfileStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="Profile" component={SignUp} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
 
-export const MainTab = () => {
+const MainTab = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName='Home'>
       <Tab.Screen
         name="Posts"
-        component={PostsStack}
+        component={PostStack}
         options={{
           tabBarIcon: ({ color, size, focused }) => (
               <FontAwesome
@@ -91,7 +93,7 @@ export const MainTab = () => {
           headerShown: false
         }}
       />
-            <Tab.Screen
+      <Tab.Screen
         name="Home"
         component={HomeStack}
         options={{
@@ -122,3 +124,14 @@ export const MainTab = () => {
     </Tab.Navigator>
   );
 }
+
+const MainStack = () => {
+  return (
+    <Stack.Navigator initialRouteName='Home'>
+      <Stack.Screen name="Auth" component={AuthStack} options={{ headerShown: false }} />
+      <Stack.Screen name="MainTab"component={MainTab} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+};
+
+export default MainStack;
