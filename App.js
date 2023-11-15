@@ -4,7 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import StartPage from './screens/main/Sprint';
-
 import MainStack from './navigations/Navigation';
 
 const Stack = createStackNavigator();
@@ -24,8 +23,6 @@ export default function App() {
       <StartPage />
     );
   }
-
-  const isLoggedIn = true;
 
   return (
     <NavigationContainer>

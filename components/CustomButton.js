@@ -5,13 +5,15 @@ import { View, Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 const CustomButton = (props) => {
   const styles = StyleSheet.create({
     button: {
-      width: 240,
-      height: 48,
-      borderRadius: 150,
+      width: props.width || 240,
+      height: props.height || 48,
+      borderRadius: props.border || 30,
       backgroundColor: '#0B666A',
       justifyContent: 'center',
       alignItems: 'center',
       margin: props.margin || 0,
+      marginRight: 10,
+      marginLeft: 10,
     },
     buttonText: {
       color: 'white',
