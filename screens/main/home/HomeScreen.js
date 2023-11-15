@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView, Pressable } from 'react-nati
 import SearchBar from '../../../components/SearchBar';
 import { FontAwesome } from '@expo/vector-icons';
 import RecentListings from '../../../components/RecentListing';
+import CustomButton from '../../../components/CustomButton';
 
 const name = 'Hamza';
 
@@ -54,24 +55,16 @@ const Home = () => {
       <View style={styles.itemContainer}>
         <Text style={styles.itemText}>Lost Anything?</Text>
         <View style={styles.buttonContainer}>
-          <Pressable style={styles.button} onPress={handleLostPost}>
-            <Text style={styles.buttonText}>Create Post</Text>
-          </Pressable>
-          <Pressable style={styles.button} onPress={handleLostListing}>
-            <Text style={styles.buttonText}>View Listings</Text>
-          </Pressable>
+          <CustomButton text="Create Post" handleButton={handleLostPost} width={'40%'} height={40} border={10} />
+          <CustomButton text="View Listing" handleButton={handleLostListing} width={'40%'} height={40} border={10} />
         </View>
       </View>
 
       <View style={styles.itemContainer}>
         <Text style={styles.itemText}>Found Anything?</Text>
         <View style={styles.buttonContainer}>
-          <Pressable style={styles.button} onPress={handleFoundPost}>
-            <Text style={styles.buttonText}>Create Post</Text>
-          </Pressable>
-          <Pressable style={styles.button} onPress={handleFoundListing}>
-            <Text style={styles.buttonText}>View Listings</Text>
-          </Pressable>
+          <CustomButton text="Create Post" handleButton={handleFoundPost} width={'40%'} height={40} border={10} />
+          <CustomButton text="View Listing" handleButton={handleFoundListing} width={'40%'} height={40} border={10} />
         </View>
       </View>
     </ScrollView>
@@ -109,7 +102,9 @@ const styles = StyleSheet.create({
     width: '90%' ,
     height: 150,
     borderRadius: 30,
-    backgroundColor: '#97FEED',
+    backgroundColor: 'white',
+    borderColor: '##0B666A',
+    borderWidth: 2,
     margin: 20,
   },
   itemText: {
@@ -118,21 +113,6 @@ const styles = StyleSheet.create({
     color: 'black',
     margin: 20,
     textAlign: 'center',
-  },
-  button: {
-    backgroundColor: '#0B666A',
-    borderRadius: 10,
-    width: '40%',
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
-    alignSelf: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '700',
   },
   buttonContainer: {
     flexDirection: 'row',

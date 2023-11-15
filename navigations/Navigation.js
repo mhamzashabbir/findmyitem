@@ -8,6 +8,10 @@ import ResetPasswordStart from '../screens/auth/ResetPasswordStart';
 import ResetPasswordConfirm from '../screens/auth/ResetPasswordConfirm';
 import CodeVerification from '../screens/auth/CodeVerification.js';
 import Home from '../screens/main/home/HomeScreen';
+import Profile from '../screens/main/profile/Profile';
+import EditProfile from '../screens/main/profile/EditProfile';
+import MyPosts from '../screens/main/posts/MyPosts';
+import PostDetails from '../screens/main/posts/PostDetails';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,18 +67,30 @@ const HomeStack = () => {
 const PostStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Posts" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="MyPosts" component={MyPosts} options={{ headerShown: false }} />
+      <Stack.Screen name="PostDetails" component={PostDetails} options={{ headerShown: false }} />
+
     </Stack.Navigator>
   );
 }
 
 const ProfileStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Profile" component={SignUp} options={{ headerShown: false }} />
+    <Stack.Navigator initialRouteName='Profile'>
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
+
 
 const MainTab = () => {
   return (
@@ -86,7 +102,7 @@ const MainTab = () => {
           tabBarIcon: ({ color, size, focused }) => (
               <FontAwesome
                   name="list"
-                  color={focused ? '#97FEED' : 'black'}
+                  color={focused ? '#0B666A' : 'black'}
                   size={30}
               />
           ),
@@ -100,7 +116,7 @@ const MainTab = () => {
           tabBarIcon: ({ color, size, focused }) => (
               <FontAwesome
                   name="home"
-                  color={focused ? '#97FEED' : 'black'}
+                  color={focused ? '#0B666A' : 'black'}
                   size={30}
               />
           ),
@@ -114,7 +130,7 @@ const MainTab = () => {
           tabBarIcon: ({ color, size, focused }) => (
               <FontAwesome
                   name="user"
-                  color={focused ? '#97FEED' : 'black'}
+                  color={focused ? '#0B666A' : 'black'}
                   size={30}
               />
           ),
@@ -127,7 +143,7 @@ const MainTab = () => {
 
 const MainStack = () => {
   return (
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='Auth'>
       <Stack.Screen name="Auth" component={AuthStack} options={{ headerShown: false }} />
       <Stack.Screen name="MainTab"component={MainTab} options={{ headerShown: false }} />
     </Stack.Navigator>
