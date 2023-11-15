@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Pressable, KeyboardAvoidingView , ScrollView} from 'react-native';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
 
 const Checkbox = ({ checked, onChange }) => (
   <Pressable onPress={onChange}>
@@ -31,56 +31,68 @@ const Login = ({navigation}) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Hi, Welcome Back</Text>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      keyboardDismissMode="on-drag"
+    >
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <View style={styles.container}>
+          <Text style={styles.heading}>Hi, Welcome Back</Text>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Email</Text>
-        <View style={styles.inputWithIcon}>
-          <MaterialIcons name="email" size={24} color="black" style={styles.icon} />
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your Email"
-            value={email}
-            onChangeText={text => setEmail(text)}
-          />
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Email</Text>
+            <View style={styles.inputWithIcon}>
+              <MaterialIcons name="email" size={24} color="black" style={styles.icon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your Email"
+                value={email}
+                onChangeText={text => setEmail(text)}
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Password</Text>
+            <View style={styles.inputWithIcon}>
+              <MaterialIcons name="lock" size={24} color="black" style={styles.icon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your Password"
+                secureTextEntry={!showPassword} // Toggle secureTextEntry
+                value={password}
+                onChangeText={text => setPassword(text)}
+              />
+              <Pressable onPress={() => setShowPassword(!showPassword)}>
+                <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="black" style={styles.showPasswordIcon} />
+              </Pressable>
+            </View>
+          </View>
+
+          <View style={styles.checkboxContainer}>
+            <Checkbox checked={rememberMe} onChange={() => setRememberMe(!rememberMe)} />
+            <Text style={styles.checkboxText}>Remember Me</Text>
+            <Pressable onPress={handleForget}>
+              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            </Pressable>
+          </View>
+
+          <CustomButton text="Login" margin={40} handleButton={handleLogin} />
+
+          <View style={styles.signUpContainer}>
+            <Text style={styles.signUpText}>Don't have an account?</Text>
+            <Pressable onPress={handleSignup}>
+              <Text style={styles.signUpLink}>Sign Up</Text>
+            </Pressable>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Password</Text>
-        <View style={styles.inputWithIcon}>
-          <MaterialIcons name="lock" size={24} color="black" style={styles.icon} />
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your Password"
-            secureTextEntry={!showPassword} // Toggle secureTextEntry
-            value={password}
-            onChangeText={text => setPassword(text)}
-          />
-          <Pressable onPress={() => setShowPassword(!showPassword)}>
-            <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="black" style={styles.showPasswordIcon} />
-          </Pressable>
-        </View>
-      </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
 
-      <View style={styles.checkboxContainer}>
-        <Checkbox checked={rememberMe} onChange={() => setRememberMe(!rememberMe)} />
-        <Text style={styles.checkboxText}>Remember Me</Text>
-        <Pressable onPress={handleForget}>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-        </Pressable>
-      </View>
-
-      <CustomButton text="Login" margin={40} handleButton={handleLogin} />
-
-      <View style={styles.signUpContainer}>
-        <Text style={styles.signUpText}>Don't have an account?</Text>
-        <Pressable onPress={handleSignup}>
-          <Text style={styles.signUpLink}>Sign Up</Text>
-        </Pressable>
-      </View>
-    </View>
   );
 };
 

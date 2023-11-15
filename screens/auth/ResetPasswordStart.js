@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView  } from 'react-native';
 import { MaterialIcons} from '@expo/vector-icons';
 
 
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
 
 const ResetPasswordStart = ({ navigation }) => {
   const [email, setEmail] = useState('');
 
   const handleReset = () => {
-
+    navigation.navigate('CodeVerification');
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} keyboardDismissMode='ondrag'>
       <Text style={styles.heading}>Reset Password</Text>
       <Text style={styles.text}>Forgot your password? No worries, it happens.</Text>
 
@@ -29,10 +29,9 @@ const ResetPasswordStart = ({ navigation }) => {
         </View>
       </View>
 
-
       <CustomButton text="Reset Password" margin={40} handleButton={handleReset} />
 
-    </View>
+    </ScrollView>
   );
 };
 

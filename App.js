@@ -1,12 +1,12 @@
 import {useState , useEffect} from 'react';
-import AppLoading from 'expo-app-loading';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import StartPage from './screens/Sprint';
-import Navigation from './navigations/Navigation';
+import StartPage from './screens/main/Sprint';
+import { AuthStack, MainTab } from './navigations/Navigation';
 
+const Stack = createStackNavigator();
 
 export default function App() {
 
@@ -24,9 +24,15 @@ export default function App() {
     );
   }
 
+  const isLoggedIn = true;
+
   return (
     <NavigationContainer>
-      <Navigation />
+      {isLoggedIn ? (
+        <MainTab/>
+      ) : (
+        <AuthStack />
+      )}
     </NavigationContainer>
   );
 }

@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Pressable, ScrollView } from 'react-native';
 import { MaterialIcons , FontAwesome } from '@expo/vector-icons';
 
 
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
 
-const ResetPasswordStart = ({ navigation }) => {
+const ResetPasswordConfirm = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleReset = () => {
-
+    navigation.navigate('Login')
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} keyboardDismissMode='ondrag'>
       <Text style={styles.heading}>Reset Password</Text>
 
       <View style={styles.inputContainer}>
@@ -64,7 +64,7 @@ const ResetPasswordStart = ({ navigation }) => {
 
       <CustomButton text="Reset Password" margin={40} handleButton={handleReset} />
 
-    </View>
+    </ScrollView>
   );
 };
 
@@ -112,4 +112,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default ResetPasswordStart;
+export default ResetPasswordConfirm;

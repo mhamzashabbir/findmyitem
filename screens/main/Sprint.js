@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-import Loading from '../components/Loading';
+import Loading from '../../components/Loading';
 
 const StartPage = () => {
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../assets/logo.png')}
+        source={require('../../assets/logo.png')}
       />
       <Loading margin={40} />
     </View>

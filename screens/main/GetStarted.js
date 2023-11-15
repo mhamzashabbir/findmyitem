@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
 
 const StartPage = ({navigation}) => {
 
@@ -12,7 +12,7 @@ const StartPage = ({navigation}) => {
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../assets/logo.png')}
+        source={require('../../assets/logo.png')}
       />
       <Text style={styles.text}>Lost your item?</Text>
       <Text style={styles.text}>Don't worry we got you covered</Text>
