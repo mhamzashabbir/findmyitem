@@ -12,7 +12,8 @@ const Checkbox = ({ checked, onChange }) => (
   </Pressable>
 );
 
-const Login = ({navigation, setIsLoggedIn}) => {
+
+const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
