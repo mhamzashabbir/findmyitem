@@ -15,9 +15,6 @@ const UserPostDetails = ({ route, navigation }) => {
   ]);
 
   const handleSavePost = () => {
-    // Save post logic
-
-    // Show alert when the post is saved
     Alert.alert(
       'Post Saved',
       'Your post has been saved successfully.',
@@ -25,7 +22,7 @@ const UserPostDetails = ({ route, navigation }) => {
   };
 
   const handleContact = () => {
-
+    navigation.navigate('UserContact');
   }
 
   const handleCommentSubmit = () => {
