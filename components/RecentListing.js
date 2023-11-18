@@ -10,8 +10,10 @@ const RecentListings = ({ data, onPressListing }) => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <Pressable style={styles.listingContainer} onPress={() => onPressListing(item)}>
-            <Image source={{ uri: item.image }} style={styles.listingImage} />
+            <Image source={{ uri: item.imageUrl }} style={styles.listingImage} />
+            <Text style={styles.listingName}>{item.name}</Text>
             <Text style={styles.listingTitle}>{item.title}</Text>
+            <Text style={styles.listingDate}>{item.category + '-' + item.date }</Text>
           </Pressable>
         )}
         horizontal
@@ -40,13 +42,29 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 15,
+    marginLeft: 10,
+  },
+  listingName: {
+    marginTop: 5,
+    fontSize: 16,
+    fontWeight: '500',
+    textAlign: 'center',
+    color : '#0B666A'
   },
   listingTitle: {
     marginTop: 5,
     fontSize: 16,
     fontWeight: '500',
     textAlign: 'center',
+    color : 'black'
   },
+  listingDate: {
+    marginTop: 5,
+    fontSize: 14,
+    fontWeight: '500',
+    color: 'gray',
+    textAlign: 'center',
+  }
 });
 
 export default RecentListings;

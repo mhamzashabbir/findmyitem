@@ -21,7 +21,7 @@ const ResetPasswordConfirm = ({ navigation }) => {
 
       <View style={styles.inputContainer}>
         <View style={styles.inputWithIcon}>
-          <MaterialIcons name="lock" size={24} color="black" style={styles.icon} />
+          <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
           <TextInput
             style={styles.input}
             placeholder="Enter your Password"
@@ -33,7 +33,7 @@ const ResetPasswordConfirm = ({ navigation }) => {
             <FontAwesome
               name={showPassword ? "eye" : "eye-slash"}
               size={24}
-              color="black"
+              color="#0B666A"
               style={styles.showPasswordIcon}
             />
           </Pressable>
@@ -42,7 +42,7 @@ const ResetPasswordConfirm = ({ navigation }) => {
 
       <View style={styles.inputContainer}>
         <View style={styles.inputWithIcon}>
-          <MaterialIcons name="lock" size={24} color="black" style={styles.icon} />
+          <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
           <TextInput
             style={styles.input}
             placeholder="Confirm your Password"
@@ -52,9 +52,9 @@ const ResetPasswordConfirm = ({ navigation }) => {
           />
           <Pressable onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
             <FontAwesome
-              name={showPassword ? "eye" : "eye-slash"}
+              name={showConfirmPassword ? "eye" : "eye-slash"}
               size={24}
-              color="black"
+              color="#0B666A"
               style={styles.showPasswordIcon}
             />
           </Pressable>

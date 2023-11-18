@@ -4,22 +4,32 @@ import SearchBar from '../../../components/SearchBar';
 import { FontAwesome } from '@expo/vector-icons';
 import RecentListings from '../../../components/RecentListing';
 import CustomButton from '../../../components/CustomButton';
+import recentListings from '../../../data/items';
 
 const name = 'Hamza';
 
-const Home = () => {
 
-  const recentListings = [
-    { id: 1, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
-    { id: 2, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
-    { id: 3, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
-    { id: 4, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
-    { id: 5, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
-    { id: 6, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
-  ];
+const Home = ({navigation}) => {
 
-  const handleRecentListing = () => {
+  // const recentListings = [
+  //   { id: 1, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
+  //   { id: 2, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
+  //   { id: 3, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
+  //   { id: 4, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
+  //   { id: 5, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
+  //   { id: 6, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
+  // ];
 
+  const handleRecentListing = (item) => {
+    navigation.navigate('UserPostDetails', {
+      name: item.name,
+      title: item.title,
+      description: item.description,
+      date: item.date,
+      imageUrl: item.imageUrl,
+      category: item.category,
+      address : item.address
+    });
   }
 
   const handleLostPost = () => {
@@ -38,7 +48,7 @@ const Home = () => {
 
   }
 
-  handleSearch = () => {
+  handleSearch = (text) => {
 
   }
 
@@ -48,7 +58,7 @@ const Home = () => {
         <FontAwesome name="user-circle" size={35} color="#000" style={styles.userIcon} />
         <Text style={styles.greetingText}>Hi, {name} </Text>
       </View>
-      <SearchBar handleSearch={handleSearch}/>
+        <SearchBar marginleft={20} handleSearch={handleSearch}/>
 
       <RecentListings data={recentListings} onPressListing={handleRecentListing} />
 
@@ -119,7 +129,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
-  }
-
+  },
 });
 export default Home;
