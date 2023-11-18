@@ -12,12 +12,13 @@ const CustomButton = (props) => {
       justifyContent: 'center',
       alignItems: 'center',
       margin: props.margin || 0,
-      marginRight: 10,
-      marginLeft: 10,
+      marginRight: props.marginRight || 10,
+      marginLeft: props.marginLeft || 10,
+      marginBottom: props.marginBottom || 0,
     },
     buttonText: {
       color: 'white',
-      fontSize: 18,
+      fontSize: props.fontSize || 18,
       fontWeight: 'bold',
     }
   });
