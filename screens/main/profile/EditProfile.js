@@ -1,4 +1,3 @@
-// EditProfileScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
@@ -15,7 +14,7 @@ const EditProfile = ({ navigation, route }) => {
   const [address, setAddress] = useState(currentAddress);
 
   const handleSaveChanges = () => {
-    navigation.navigate('Profile', {
+    navigation.navigate('ProfileStack', {
       updatedName: name,
       updatedEmail: email,
       updatedPhone: phone,
@@ -34,39 +33,51 @@ const EditProfile = ({ navigation, route }) => {
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Name</Text>
-          <TextInput
-            style={styles.input}
-            value={name}
-            onChangeText={(text) => setName(text)}
-          />
+          <View style={styles.inputWithIcon}>
+              <FontAwesome name="user" size={24} color="#0B666A" style={styles.icon} />
+              <TextInput
+                style={styles.input}
+                value={name}
+                onChangeText={(text) => setName(text)}
+              />
+          </View>
         </View>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Email</Text>
-          <TextInput
-            style={styles.input}
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
+          <View style={styles.inputWithIcon}>
+              <FontAwesome name="envelope" size={24} color="#0B666A" style={styles.icon} />
+              <TextInput
+                style={styles.input}
+                value={email}
+                onChangeText={text => setEmail(text)}
+              />
+          </View>
         </View>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Phone</Text>
-          <TextInput
-            style={styles.input}
-            value={phone}
-            keyboardType='phone-pad'
-            onChangeText={(text) => setPhone(text)}
-          />
+          <View style={styles.inputWithIcon}>
+              <FontAwesome name="phone" size={24} color="#0B666A" style={styles.icon} />
+              <TextInput
+                style={styles.input}
+                value={phone}
+                keyboardType='phone-pad'
+                onChangeText={(text) => setPhone(text)}
+              />
+          </View>
         </View>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Address</Text>
-          <TextInput
-            style={styles.input}
-            value={address}
-            onChangeText={(text) => setAddress(text)}
-          />
+          <View style={styles.inputWithIcon}>
+              <FontAwesome name="location-arrow" size={30} color="#0B666A" style={styles.icon} />
+              <TextInput
+                style={styles.input}
+                value={address}
+                onChangeText={(text) => setAddress(text)}
+              />
+          </View>
         </View>
 
         <CustomButton text="Save Changes" handleButton={handleSaveChanges} width={'80%'} height={40} border={10} margin={40} />
@@ -107,6 +118,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#97FEED',
     borderRadius: 10,
     paddingHorizontal: 16,
+  },
+  inputWithIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '90%',
+    height: '40',
+    backgroundColor: '#97FEED',
+    borderRadius: 10,
+  },
+  icon: {
+    marginLeft: 10,
   },
 });
 

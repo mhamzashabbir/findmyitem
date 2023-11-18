@@ -7,7 +7,7 @@ const PostItem = ({ post }) => {
       <Image source={{ uri: post.imageUrl }} style={styles.image} />
       <View style={styles.textContainer}>
         <Text style={styles.title}>{post.title}</Text>
-        <Text style={styles.description}>{post.description}</Text>
+        <Text style={styles.description} numberOfLines={3}>{post.description}</Text>
         <Text style={styles.date}>Posted on: {post.date}</Text>
       </View>
     </View>

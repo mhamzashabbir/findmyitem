@@ -11,7 +11,9 @@ import Home from '../screens/main/home/HomeScreen';
 import Profile from '../screens/main/profile/Profile';
 import EditProfile from '../screens/main/profile/EditProfile';
 import MyPosts from '../screens/main/posts/MyPosts';
-import PostDetails from '../screens/main/posts/PostDetails';
+import MyPostDetails from '../screens/main/posts/MyPostDetails.js';
+import UserPostDetails from '../screens/main/posts/UserPostDetails.js';
+import EditMyPost from '../screens/main/posts/EditMyPost.js';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,26 +61,29 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+      <Stack.Screen name="HomeStack" component={Home} options={{ headerShown: false }} />
+      <Stack.Screen name="UserPostDetails" component={UserPostDetails} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
 
+
 const PostStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen name="MyPosts" component={MyPosts} options={{ headerShown: false }} />
-      <Stack.Screen name="PostDetails" component={PostDetails} options={{ headerShown: false }} />
-
+      <Stack.Screen name="MyPostDetails" component={MyPostDetails} options={{ headerShown: false }} />
+      <Stack.Screen name="EditMyPost" component={EditMyPost} options={{ headerShown: false }} />
+      <Stack.Screen name="UserPostDetails" component={UserPostDetails} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
 
 const ProfileStack = () => {
   return (
-    <Stack.Navigator initialRouteName='Profile'>
+    <Stack.Navigator initialRouteName='ProfileStack'>
       <Stack.Screen
-        name="Profile"
+        name="ProfileStack"
         component={Profile}
         options={{ headerShown: false }}
       />

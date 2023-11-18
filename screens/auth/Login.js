@@ -45,7 +45,7 @@ const Login = ({navigation}) => {
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Email</Text>
             <View style={styles.inputWithIcon}>
-              <MaterialIcons name="email" size={24} color="black" style={styles.icon} />
+              <MaterialIcons name="email" size={24} color="#0B666A" style={styles.icon} />
               <TextInput
                 style={styles.input}
                 placeholder="Enter your Email"
@@ -58,16 +58,16 @@ const Login = ({navigation}) => {
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Password</Text>
             <View style={styles.inputWithIcon}>
-              <MaterialIcons name="lock" size={24} color="black" style={styles.icon} />
+              <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
               <TextInput
                 style={styles.input}
                 placeholder="Enter your Password"
-                secureTextEntry={!showPassword} // Toggle secureTextEntry
+                secureTextEntry={!showPassword}
                 value={password}
                 onChangeText={text => setPassword(text)}
               />
               <Pressable onPress={() => setShowPassword(!showPassword)}>
-                <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="black" style={styles.showPasswordIcon} />
+                <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="#0B666A" style={styles.showPasswordIcon} />
               </Pressable>
             </View>
           </View>

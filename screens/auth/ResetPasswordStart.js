@@ -19,7 +19,7 @@ const ResetPasswordStart = ({ navigation }) => {
 
       <View style={styles.inputContainer}>
         <View style={styles.inputWithIcon}>
-          <MaterialIcons name="email" size={24} color="black" style={styles.icon} />
+          <MaterialIcons name="email" size={24} color="#0B666A" style={styles.icon} />
           <TextInput
             style={styles.input}
             placeholder="Enter your Email"

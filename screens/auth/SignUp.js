@@ -37,7 +37,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="account-circle" size={24} color="black" style={styles.icon} />
+            <MaterialIcons name="account-circle" size={24} color="#0B666A" style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Username"
@@ -49,7 +49,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="email" size={24} color="black" style={styles.icon} />
+            <MaterialIcons name="email" size={24} color="#0B666A" style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Email"
@@ -61,7 +61,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="phone" size={24} color="black" style={styles.icon} />
+            <MaterialIcons name="phone" size={24} color="#0B666A" style={styles.icon} />
             <ModalDropdown
               options={countries.map((country) => `${country.name} (${country.dial_code})`)}
               defaultValue={`${countries[0].name} (${countries[0].dial_code})`}
@@ -81,7 +81,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="lock" size={24} color="black" style={styles.icon} />
+            <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Password"
@@ -93,7 +93,7 @@ const SignUp = ({ navigation }) => {
               <FontAwesome
                 name={showPassword ? "eye" : "eye-slash"}
                 size={24}
-                color="black"
+                color="#0B666A"
                 style={styles.showPasswordIcon}
               />
             </Pressable>
