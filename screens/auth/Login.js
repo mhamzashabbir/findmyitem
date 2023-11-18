@@ -80,7 +80,7 @@ const Login = ({navigation}) => {
             </Pressable>
           </View>
 
-          <CustomButton text="Login" margin={40} handleButton={handleLogin} />
+          <CustomButton text="Login" margin={40} handleButton={handleLogin}  border={10}/>
 
           <View style={styles.signUpContainer}>
             <Text style={styles.signUpText}>Don't have an account?</Text>

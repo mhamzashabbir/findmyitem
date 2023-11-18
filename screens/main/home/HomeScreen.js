@@ -42,10 +42,14 @@ const Home = ({navigation}) => {
 
   }
 
+  handleUser = () => {
+    navigation.navigate('Profile');
+  }
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false} >
       <View style={styles.GreetingContainer}>
-        <FontAwesome name="user-circle" size={35} color='#0B666A' style={styles.userIcon} />
+        <FontAwesome name="user-circle" size={35} color='#0B666A' style={styles.userIcon} onPress={handleUser} />
         <Text style={styles.greetingText}>Hi, {name} </Text>
       </View>
         <SearchBar marginleft={20} handleSearch={handleSearch}/>

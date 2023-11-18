@@ -14,7 +14,7 @@ const CustomButton = (props) => {
       margin: props.margin || 0,
       marginRight: props.marginRight || 10,
       marginLeft: props.marginLeft || 10,
-      marginBottom: props.marginBottom || 0,
+      marginBottom: props.marginBottom || 10,
     },
     buttonText: {
       color: 'white',

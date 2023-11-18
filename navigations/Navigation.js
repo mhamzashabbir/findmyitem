@@ -65,6 +65,7 @@ const HomeStack = () => {
       <Stack.Screen name="HomeStack" component={Home} options={{ headerShown: false }} />
       <Stack.Screen name="UserPostDetails" component={UserPostDetails} options={{ headerShown: false }} />
       <Stack.Screen name='UserContact'  component={UserContact} options={{ headerShown: false }} />
+      <Stack.Screen name="ProfileStack" component={Profile} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
@@ -85,16 +86,8 @@ const PostStack = () => {
 const ProfileStack = () => {
   return (
     <Stack.Navigator initialRouteName='ProfileStack'>
-      <Stack.Screen
-        name="ProfileStack"
-        component={Profile}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="EditProfile"
-        component={EditProfile}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="ProfileStack" component={Profile} options={{ headerShown: false }} />
+      <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

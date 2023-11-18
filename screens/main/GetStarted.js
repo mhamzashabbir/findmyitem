@@ -16,7 +16,7 @@ const StartPage = ({navigation}) => {
       />
       <Text style={styles.text}>Lost your item?</Text>
       <Text style={styles.text}>Don't worry we got you covered</Text>
-      <CustomButton text="Get Started" margin={40} handleButton={handleButton}/>
+      <CustomButton text="Get Started" margin={40} handleButton={handleButton} marginBottom={20} border={10} />
     </View>
   );
 };

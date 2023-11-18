@@ -100,7 +100,7 @@ const SignUp = ({ navigation }) => {
           </View>
         </View>
 
-        <CustomButton text="SignUp" margin={40} handleButton={handleSignUp} />
+        <CustomButton text="SignUp" margin={40} handleButton={handleSignUp} width={'80%'} border={10} />
 
         <View style={styles.loginContainer}>
           <Text style={styles.loginText}>Already have an account?</Text>
