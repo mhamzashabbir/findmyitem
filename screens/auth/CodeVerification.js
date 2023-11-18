@@ -41,7 +41,7 @@ const CodeVerification = ({ navigation }) => {
           <Text style={styles.resendCodeText}>Resend Code?</Text>
         </Pressable>
 
-        <CustomButton text="Verify" margin={40} handleButton={handleVerify} />
+        <CustomButton text="Verify" margin={40} width={'75%'} border={10} handleButton={handleVerify} />
 
       </ScrollView>
 

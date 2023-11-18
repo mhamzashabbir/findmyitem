@@ -100,7 +100,7 @@ const SignUp = ({ navigation }) => {
           </View>
         </View>
 
-        <CustomButton text="SignUp" margin={40} handleButton={handleSignUp} width={'80%'} border={10} />
+        <CustomButton text="SignUp" margin={40} handleButton={handleSignUp} width={'84%'} border={10} />
 
         <View style={styles.loginContainer}>
           <Text style={styles.loginText}>Already have an account?</Text>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     height: '90%',
     marginLeft: 20,
     backgroundColor: '#97FEED',
-    borderRadius: 20,
+    borderRadius: 10,
     marginTop: 10,
   },
   icon: {

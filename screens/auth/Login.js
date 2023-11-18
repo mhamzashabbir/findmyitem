@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
     width: '70%',
     height: '70%',
     backgroundColor: '#97FEED',
-    borderRadius: 20,
     paddingHorizontal: 16,
     marginHorizontal: 16,
     marginLeft: 0,
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
     height: '90%',
     marginLeft: 20,
     backgroundColor: '#97FEED',
-    borderRadius: 20,
+    borderRadius: 10,
     marginTop: 10,
   },
   checkboxContainer: {

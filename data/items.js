@@ -92,7 +92,7 @@ const postsData = [
   {
     id: '10',
     name: 'Muhammad Hamza',
-    title: 'Bose QuietComfort Earbuds',
+    title: 'Bose Earbuds',
     description: 'Found premium noise-canceling earbuds (Bose QuietComfort Earbuds) for an immersive audio experience. Found it near 707 Pine Avenue, Cityville.',
     date: '2023-10-19',
     imageUrl: 'https://alhamdtech.pk/cdn/shop/products/BoseQuietComfortEarbudsII.1.png?v=1670252348',

@@ -29,7 +29,7 @@ const ResetPasswordStart = ({ navigation }) => {
         </View>
       </View>
 
-      <CustomButton text="Reset Password" margin={40} handleButton={handleReset} />
+      <CustomButton text="Reset Password" margin={40} width={'83%'} border={10} handleButton={handleReset} />
 
     </ScrollView>
   );
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     height: '90%',
     marginLeft: 20,
     backgroundColor: '#97FEED',
-    borderRadius: 20,
+    borderRadius: 10,
     marginTop: 10,
   },
   icon: {
