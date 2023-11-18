@@ -4,6 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {FontAwesome} from '@expo/vector-icons';
 import Map from '../../../components/Map';
 import { Clipboard } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 const recentActivity = [
   { id: 1, action: 'Posted a listing', timestamp: '2 hours ago' },
@@ -23,7 +24,12 @@ const userData = {
 
 const copyToClipboard = (text) => {
   Clipboard.setString(text);
-  // You can add a toast or alert here to notify the user that the text has been copied
+  Toast.show({
+    type: 'success',
+    position: 'top',
+    text1: 'Copied to clipboard',
+  });
+
 };
 
 const UserContact = () => {
@@ -85,7 +91,7 @@ const UserContact = () => {
       </View>
 
       <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Recent Activities</Text>
+        <Text style={styles.sectionTitle}>Recent Activity</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {recentActivity.map((activity) => (
             <View key={activity.id} style={styles.activityItem}>

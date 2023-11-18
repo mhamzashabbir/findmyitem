@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, Pressable, ScrollView, TextInput } from 
 import CustomButton from '../../../components/CustomButton';
 import BackButton from '../../../components/Back';
 import { FontAwesome } from '@expo/vector-icons';
-import { Alert } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 const UserPostDetails = ({ route, navigation }) => {
   const { name, title, description, date, imageUrl, address, category } = route.params;
@@ -15,10 +15,11 @@ const UserPostDetails = ({ route, navigation }) => {
   ]);
 
   const handleSavePost = () => {
-    Alert.alert(
-      'Post Saved',
-      'Your post has been saved successfully.',
-    );
+    Toast.show({
+      type: 'success',
+      position: 'top',
+      text1: 'Post Saved Successfully',
+    });
   };
 
   const handleContact = () => {
