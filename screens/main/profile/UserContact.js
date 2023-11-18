@@ -58,18 +58,22 @@ const UserContact = () => {
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>Contact Details</Text>
         <View style={styles.contactDetailsContainer}>
-          <View style={styles.contactRow}>
-            <Text style={styles.contactLabel}>Phone:</Text>
-            <Text style={styles.contactValue}>{phone}</Text>
-            <Pressable onPress={() => copyToClipboard(phone)}>
-             <FontAwesome5 name="copy" size={20} color="#0B666A" style={styles.copyIcon} />
-            </Pressable>
+          <View style={styles.contactInnerContainer}>
+            <View style={styles.contactRow}>
+              <Text style={styles.contactLabel}>Phone:</Text>
+              <Text style={styles.contactValue}>{phone}</Text>
+            </View>
+            <View style={styles.contactRow}>
+              <Text style={styles.contactLabel}>Email:</Text>
+              <Text style={styles.contactValue}>{email}</Text>
+            </View>
           </View>
-          <View style={styles.contactRow}>
-            <Text style={styles.contactLabel}>Email:</Text>
-            <Text style={styles.contactValue}>{email}</Text>
+          <View style={styles.copyContainer}>
+            <Pressable onPress={() => copyToClipboard(phone)}>
+                <FontAwesome5 name="copy" size={20} color="#0B666A" style={styles.copyIcon} />
+            </Pressable>
             <Pressable onPress={() => copyToClipboard(email)}>
-             <FontAwesome5 name="copy" size={20} color="#0B666A" style={styles.copyIcon} />
+              <FontAwesome5 name="copy" size={20} color="#0B666A" style={styles.copyIcon} />
             </Pressable>
           </View>
         </View>
@@ -155,12 +159,15 @@ const styles = StyleSheet.create({
   },
   contactDetailsContainer: {
     marginTop: 10,
+    flexDirection: 'row',
   },
   contactRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 5,
-    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  copyContainer: {
+    marginLeft: 85,
   },
   addressRow: {
     flexDirection: 'row',
@@ -220,6 +227,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   copyIcon: {
+    marginBottom: 10,
     marginLeft: 10,
   },
   contactValueContainer: {
