@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, Pressable, ScrollView, TextInput } from 
 import CustomButton from '../../../components/CustomButton';
 import BackButton from '../../../components/Back';
 import { FontAwesome } from '@expo/vector-icons';
+import { Alert } from 'react-native';
 
 const UserPostDetails = ({ route, navigation }) => {
   const { name, title, description, date, imageUrl, address, category } = route.params;
@@ -14,7 +15,13 @@ const UserPostDetails = ({ route, navigation }) => {
   ]);
 
   const handleSavePost = () => {
-    console.log('Save post logic');
+    // Save post logic
+
+    // Show alert when the post is saved
+    Alert.alert(
+      'Post Saved',
+      'Your post has been saved successfully.',
+    );
   };
 
   const handleContact = () => {

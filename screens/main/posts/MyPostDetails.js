@@ -4,6 +4,7 @@ import CustomButton from '../../../components/CustomButton';
 import BackButton from '../../../components/Back';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { FontAwesome } from '@expo/vector-icons';
+import { Alert } from 'react-native';
 
 const MyPostDetails = ({ route, navigation }) => {
   const { name, title, description, date, imageUrl, address, category } = route.params;
@@ -28,6 +29,20 @@ const MyPostDetails = ({ route, navigation }) => {
 
   const handleDeletePost = () => {
 
+    Alert.alert(
+      'Delete Post',
+      'Are you sure you want to delete this post?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel'
+        },
+        {
+          text: 'Delete',
+          onPress: () => navigation.navigate('MyPosts')
+        }
+      ]
+    );
   }
 
   const handleCommentSubmit = () => {
