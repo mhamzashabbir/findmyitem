@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, StyleSheet, Image, ScrollView, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import CustomButton from '../../../components/CustomButton';
 import BackButton from '../../../components/Back';
+import * as ImagePicker from 'expo-image-picker';
 import Toast from 'react-native-toast-message';
 import colors from '../../../styles/colors';
 
@@ -14,6 +15,16 @@ const EditProfile = ({ navigation, route }) => {
   const [email, setEmail] = useState(currentEmail);
   const [phone, setPhone] = useState(currentPhone);
   const [address, setAddress] = useState(currentAddress);
+  const [profileImage, setProfileImage] = useState(require('../../../assets/user.png'));
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Sorry, we need camera roll permissions to make this work!');
+      }
+    })();
+  }, []);
 
   const handleSaveChanges = () => {
     navigation.navigate('ProfileStack', {
@@ -21,6 +32,7 @@ const EditProfile = ({ navigation, route }) => {
       updatedEmail: email,
       updatedPhone: phone,
       updatedAddress: address,
+      updatedProfileImage: profileImage,
     });
     Toast.show({
       type: 'success',
@@ -30,14 +42,28 @@ const EditProfile = ({ navigation, route }) => {
     });
   };
 
+  const handleSelectProfileImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      const selectedImage = result.assets && result.assets.length > 0 ? result.assets[0] : null;
+        setProfileImage(selectedImage);
+    }
+  };
+
+
   return (
     <ScrollView style={styles.container}>
-          <BackButton onPress={() => navigation.goBack()}/>
+      <BackButton onPress={() => navigation.goBack()}/>
       <View style={styles.profileContainer}>
-        <Image
-          source={require('../../../assets/user.png')}
-          style={styles.profileImage}
-        />
+        <Pressable onPress={handleSelectProfileImage}>
+          <Image source={profileImage} style={styles.profileImageStyle} />
+        </Pressable>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Name</Text>
@@ -104,7 +130,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginTop: 50,
   },
-  profileImage: {
+  profileImageStyle: {
     width: 150,
     height: 150,
     borderRadius: 75,

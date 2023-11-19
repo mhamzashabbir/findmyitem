@@ -16,7 +16,7 @@ import UserPostDetails from '../screens/main/posts/UserPostDetails.js';
 import EditMyPost from '../screens/main/posts/EditMyPost.js';
 import UserContact from '../screens/main/profile/UserContact.js';
 import AllPosts from '../screens/main/posts/AllPosts.js';
-
+import CreatePost from '../screens/main/posts/CreatePost.js';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -70,7 +70,7 @@ const HomeStack = () => {
       <Stack.Screen name='UserContact'  component={UserContact} options={{ headerShown: false }} />
       <Stack.Screen name="ProfileStack" component={Profile} options={{ headerShown: false }} />
       <Stack.Screen name="AllPosts" component={AllPosts} options={{ headerShown: false }} />
-
+      <Stack.Screen name="CreatePost" component={CreatePost} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

@@ -19,8 +19,12 @@ const PostsScreen = ({ navigation }) => {
     });
   };
 
-  const handleSearch = (text) => {
-
+  handleSearch = () => {
+    Toast.show({
+      type: 'info',
+      position: 'top',
+      text1: 'Search Feature is not available yet',
+    })
   }
 
   return (
