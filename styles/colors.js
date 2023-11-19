@@ -14,6 +14,7 @@ const colors = {
   authBackground: 'white',
   iconColor: '#0B666A',
   inputBackground: '#97FEED',
+  inputBorder: '#0B666A',
   splashBackground: '#97FEED',
   mainBackground: 'white',
 };

@@ -14,7 +14,7 @@ const Loading = (props) => {
     ellipse: {
       width: 15,
       height: 12,
-      backgroundColor: colors.backgroundColor,
+      backgroundColor: colors.green,
       borderRadius: 9999,
       marginHorizontal: 10,
       transform: [{ scale: 1.5 }],
