@@ -8,6 +8,11 @@ const postsData = [
     imageUrl: 'https://apple-store.pk/wp-content/uploads/2022/12/alu-spacegray-sp.jpg',
     category: 'Lost',
     address: '123 Main Street, Cityville',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '2',
@@ -18,6 +23,11 @@ const postsData = [
     imageUrl: 'https://i0.wp.com/mobileguru.pk/wp-content/uploads/2022/07/Samsung-Galaxy-S21-Plus-Pakistan-mobileguru.png?fit=867%2C867&ssl=1',
     category: 'Found',
     address: '456 Broad Avenue, Townsville',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '3',
@@ -28,6 +38,11 @@ const postsData = [
     imageUrl: 'https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$',
     category: 'Lost',
     address: '789 Oak Lane, Villageland',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '4',
@@ -38,6 +53,11 @@ const postsData = [
     imageUrl: 'https://khawajaphotos.pk/wp-content/uploads/2022/03/Canon-EOS-R5-Only-body.jpg',
     category: 'Found',
     address: '101 Pine Road, Hamlet City',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '5',
@@ -48,6 +68,11 @@ const postsData = [
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFUzbHNKkTNDU64DaFZtaQI8rL__8LeanqhQ&usqp=CAU',
     category: 'Lost',
     address: '202 Maple Street, Villageville',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '6',
@@ -58,16 +83,26 @@ const postsData = [
     imageUrl: 'https://www3.djicdn.com/cms/uploads/c323a1ef546e5e8b8e15bac5974dc217@374*374.jpg',
     category: 'Found',
     address: '303 Elm Boulevard, Citytown',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '7',
     name: 'Muhammad Hamza',
-    title: 'Microsoft Surface Laptop 4',
+    title: 'MS Surface Laptop 4',
     description: 'Lost a premium laptop (Microsoft Surface Laptop 4) with a high-resolution touchscreen and powerful performance. Lost it near 404 Birch Avenue, Townland.',
     date: '2023-07-30',
     imageUrl: 'https://www.notebookcheck.net/fileadmin/Notebooks/Microsoft/Surface_Laptop_4_13_i7/IMG_0721.JPG',
     category: 'Lost',
     address: '404 Birch Avenue, Townland',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '8',
@@ -78,6 +113,11 @@ const postsData = [
     imageUrl: 'https://static-01.daraz.pk/p/a27fdc52e92bf83e4176c6f0956121e1.jpg_750x750.jpg_.webp',
     category: 'Found',
     address: '505 Cedar Lane, Villagetown',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '9',
@@ -88,16 +128,26 @@ const postsData = [
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJpYruZCRH3lEX7pOJnlgAMCUU-hFMEMIFjQ&usqp=CAU',
     category: 'Lost',
     address: '606 Oak Street, Hamletville',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
   {
     id: '10',
     name: 'Muhammad Hamza',
-    title: 'Bose QuietComfort Earbuds',
+    title: 'Bose Earbuds',
     description: 'Found premium noise-canceling earbuds (Bose QuietComfort Earbuds) for an immersive audio experience. Found it near 707 Pine Avenue, Cityville.',
     date: '2023-10-19',
     imageUrl: 'https://alhamdtech.pk/cdn/shop/products/BoseQuietComfortEarbudsII.1.png?v=1670252348',
     category: 'Found',
     address: '707 Pine Avenue, Cityville',
+    commentText: '',
+    comments: [
+      { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
+      { id: '2', user: 'Jane Smith', text: 'Great work' },
+    ],
   },
 ];
 

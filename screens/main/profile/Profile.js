@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, SafeAreaView, Pressable, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import CustomButton from '../../../components/CustomButton';
+import colors from '../../../styles/colors';
 
 const Profile = ({navigation, route}) => {
 
@@ -39,7 +40,7 @@ const Profile = ({navigation, route}) => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {recentActivityData.map((activity) => (
             <View key={activity.id} style={styles.activityItem}>
-              <FontAwesome name="history" size={20} color="#0B666A" style={styles.activityIcon} />
+              <FontAwesome name="history" size={20} color={colors.iconColor} style={styles.activityIcon} />
               <View style={styles.activityText}>
                 <Text>{activity.action}</Text>
                 <Text style={styles.timestamp}>{activity.timestamp}</Text>
@@ -53,10 +54,10 @@ const Profile = ({navigation, route}) => {
 
   const renderSavedItems = () => {
     const savedItemsData = [
-      { id: 1, itemName: 'Lost keys', category: 'Personal Items' },
-      { id: 2, itemName: 'Found laptop', category: 'Electronics' },
-      { id: 3, itemName: 'Lost keys', category: 'Personal Items' },
-      { id: 4, itemName: 'Found laptop', category: 'Electronics' },
+      { id: 1, itemName: 'Apple Watch', category: 'Lost Item' },
+      { id: 2, itemName: 'Mac Book', category: 'Found Item' },
+      { id: 3, itemName: 'Black Wallet', category: 'Lost Item' },
+      { id: 4, itemName: 'Car Keys', category: 'Found Item' },
     ];
 
     return (
@@ -65,7 +66,7 @@ const Profile = ({navigation, route}) => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {savedItemsData.map((item) => (
             <View key={item.id} style={styles.savedItem}>
-              <FontAwesome name="bookmark" size={20} color="#0B666A" style={styles.savedIcon} />
+              <FontAwesome name="bookmark" size={20} color={colors.iconColor} style={styles.savedIcon} />
               <View style={styles.savedText}>
                 <Text>{item.itemName}</Text>
                 <Text style={styles.category}>{item.category}</Text>
@@ -111,7 +112,7 @@ const Profile = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.mainBackground,
   },
   profileContainer: {
     alignItems: 'center',
@@ -131,17 +132,17 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 24,
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
   },
   userEmail: {
     fontSize: 16,
-    color: 'gray',
+    color: colors.gray,
   },
   userDetails: {
     flexDirection: 'row',
     alignItems: 'center',
     fontSize: 16,
-    color: 'black',
+    color: colors.black,
     marginVertical: 5,
   },
   icon: {
@@ -151,20 +152,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  button: {
-    backgroundColor: '#0B666A',
-    borderRadius: 10,
-    width: 150,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '700',
-  },
   section: {
     marginVertical: 20,
     width: '95%',
@@ -173,12 +160,12 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
     marginBottom: 10,
   },
   activityItem: {
-    backgroundColor: 'white',
-    borderColor: '#0B666A',
+    backgroundColor: colors.mainBackground,
+    borderColor: colors.green,
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
@@ -194,12 +181,12 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     fontSize: 12,
-    color: 'gray',
+    color: colors.gray,
     marginTop: 5,
   },
   savedItem: {
     backgroundColor: 'white',
-    borderColor: '#0B666A',
+    borderColor: colors.green,
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
@@ -215,7 +202,7 @@ const styles = StyleSheet.create({
   },
   category: {
     fontSize: 12,
-    color: 'gray',
+    color: colors.gray,
     marginTop: 5,
   },
 });

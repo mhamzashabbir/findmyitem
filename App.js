@@ -1,7 +1,7 @@
 import {useState , useEffect} from 'react';
-import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 
 import StartPage from './screens/main/Sprint';
 import MainStack from './navigations/Navigation';
@@ -27,6 +27,7 @@ export default function App() {
   return (
     <NavigationContainer>
         <MainStack />
+        <Toast />
     </NavigationContainer>
   );
 }

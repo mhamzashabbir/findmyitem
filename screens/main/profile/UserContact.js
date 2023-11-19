@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, Pressable } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import { FontAwesome } from '@expo/vector-icons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {FontAwesome} from '@expo/vector-icons';
+import Map from '../../../components/Map';
+import { Clipboard } from 'react-native';
+import Toast from 'react-native-toast-message';
+import colors from '../../../styles/colors';
 
-// Dummy data for recent activities
 const recentActivity = [
   { id: 1, action: 'Posted a listing', timestamp: '2 hours ago' },
   { id: 2, action: 'Commented on a post', timestamp: '1 day ago' },
@@ -11,7 +14,6 @@ const recentActivity = [
   { id: 4, action: 'Commented on a post', timestamp: '1 day ago' },
 ];
 
-// Dummy data for user details
 const userData = {
   name: 'Muhammad Hamza',
   phone: '+1234567890',
@@ -21,15 +23,25 @@ const userData = {
   userLongitude: -122.4194,
 };
 
+const copyToClipboard = (text) => {
+  Clipboard.setString(text);
+  Toast.show({
+    type: 'success',
+    position: 'top',
+    text1: 'Copied to clipboard',
+    text2: 'You can paste it anywhere now',
+  });
+
+};
+
 const UserContact = () => {
   const { name, phone, email, address, userLatitude, userLongitude } = userData;
   const [mapLayout, setMapLayout] = useState({ width: 0, height: 0 });
 
   const handleChatPress = () => {
 
-  }
+  };
 
-  // Use useEffect to handle layout changes
   useEffect(() => {
     if (mapLayout.width !== 0 && mapLayout.height !== 0) {
       // Do something with the layout information
@@ -38,27 +50,58 @@ const UserContact = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.userInfoContainer}>
-        <Image
-          source={require('../../../assets/user.png')} // Add the correct image source
-          style={styles.profileImage}
-        />
-        <View style={styles.userInfo}>
+      <View style={styles.headerContainer}>
+        <Image source={require('../../../assets/user.png')} style={styles.profileImage} />
+        <View style={styles.headerTextContainer}>
           <Text style={styles.userName}>{name}</Text>
-          <Text style={styles.userDetails}>Phone: {phone}</Text>
-          <Text style={styles.userDetails}>Email: {email}</Text>
-          <Text style={styles.userDetails}>Address: {address}</Text>
         </View>
       </View>
 
-      <View style={styles.separator} />
+      <View style={styles.sectionContainer}>
+        <Text style={styles.sectionTitle}>Contact Details</Text>
+        <View style={styles.contactDetailsContainer}>
+          <View style={styles.contactInnerContainer}>
+            <View style={styles.contactRow}>
+              <Text style={styles.contactLabel}>Phone:</Text>
+              <Text style={styles.contactValue}>{phone}</Text>
+            </View>
+            <View style={styles.contactRow}>
+              <Text style={styles.contactLabel}>Email:</Text>
+              <Text style={styles.contactValue}>{email}</Text>
+            </View>
+          </View>
+          <View style={styles.copyContainer}>
+            <Pressable onPress={() => copyToClipboard(phone)}>
+                <FontAwesome5 name="copy" size={20} color={colors.iconColor} style={styles.copyIcon} />
+            </Pressable>
+            <Pressable onPress={() => copyToClipboard(email)}>
+              <FontAwesome5 name="copy" size={20} color={colors.iconColor} style={styles.copyIcon} />
+            </Pressable>
+          </View>
+        </View>
+      </View>
 
-      <View style={styles.recentActivitiesContainer} onLayout={(event) => setMapLayout(event.nativeEvent.layout)}>
-        <Text style={styles.sectionTitle}>Recent Activities</Text>
+      <View style={styles.sectionContainer}>
+        <View style={styles.addressRow}>
+          <Text style={styles.sectionTitle}>Address</Text>
+          <Pressable onPress={() => copyToClipboard(address)}>
+            <FontAwesome5 name="copy" size={20} color={colors.iconColor} style={styles.copyIcon} />
+          </Pressable>
+        </View>
+        <Text style={styles.addressText}>{address}</Text>
+      </View>
+
+      <View style={styles.sectionContainer} onLayout={(event) => setMapLayout(event.nativeEvent.layout)}>
+        <Text style={styles.sectionTitle}>Pin Location</Text>
+        <Map userLatitude={userLatitude} userLongitude={userLongitude} mapLayout={mapLayout} address={address} name={name} />
+      </View>
+
+      <View style={styles.sectionContainer}>
+        <Text style={styles.sectionTitle}>Recent Activity</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {recentActivity.map((activity) => (
             <View key={activity.id} style={styles.activityItem}>
-              <FontAwesome name="history" size={20} color="#0B666A" style={styles.activityIcon} />
+              <FontAwesome5 name="history" size={20} color={colors.iconColor} style={styles.activityIcon} />
               <View style={styles.activityText}>
                 <Text>{activity.action}</Text>
                 <Text style={styles.timestamp}>{activity.timestamp}</Text>
@@ -67,27 +110,9 @@ const UserContact = () => {
           ))}
         </ScrollView>
       </View>
-      <Text style={styles.MapTitle}>Pin Location</Text>
-      {mapLayout.width !== 0 && mapLayout.height !== 0 && (
-        <MapView
-          style={styles.mapContainer}
-          initialRegion={{
-            latitude: userLatitude,
-            longitude: userLongitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        >
-          <Marker
-            coordinate={{ latitude: userLatitude, longitude: userLongitude }}
-            title={name}
-            description={`Address: ${address}`}
-          />
-        </MapView>
-      )}
 
       <Pressable style={styles.chatButton} onPress={handleChatPress}>
-        <FontAwesome name="comment" size={24} color="white" />
+        <FontAwesome name="comment" size={24} color={colors.white} />
         <Text style={styles.chatButtonText}>Chat</Text>
       </Pressable>
     </ScrollView>
@@ -97,74 +122,77 @@ const UserContact = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.mainBackground,
   },
-  userInfoContainer: {
-    flexDirection: 'row',
+  headerContainer: {
     alignItems: 'center',
     marginTop: 50,
-    paddingHorizontal: 5,
+    paddingHorizontal: 20,
   },
   profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 75,
-    marginRight: 20,
+    width: 150,
+    height: 150,
+    borderRadius: 40,
   },
-  userInfo: {
+  headerTextContainer: {
     flex: 1,
+    marginTop: 20,
   },
   userName: {
     fontSize: 24,
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
     marginBottom: 10,
   },
-  contactDetails: {
+  copyButton: {
+    color: colors.green,
+    fontSize: 16,
+    marginLeft: 30,
+
+  },
+  sectionContainer: {
+    margin: 20,
+  },
+  sectionTitle: {
+    fontWeight: '700',
+    color: colors.black,
+    marginBottom: 10,
+    fontSize: 20,
+  },
+  contactDetailsContainer: {
     marginTop: 10,
-    width: '80%',
+    flexDirection: 'row',
   },
   contactRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: 10,
+  },
+  copyContainer: {
+    marginLeft: 85,
+  },
+  addressRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   contactLabel: {
     fontSize: 16,
     fontWeight: 'bold',
     marginRight: 5,
-    color: 'gray',
+    color: colors.gray,
   },
   contactValue: {
     fontSize: 16,
-    color: 'black',
+    color: colors.black,
   },
-  separator: {
-    height: 1,
-    backgroundColor: '#0B666A',
-    marginVertical: 16,
-  },
-  recentActivitiesContainer: {
-    margin: 10,
-    marginRight: 10,
-  },
-  sectionTitle: {
-    fontWeight: '700',
-    color: 'black',
-    marginBottom: 10,
-    fontSize: 20,
-  },
-  MapTitle: {
-    fontWeight: '700',
-    color: 'black',
-    marginBottom: 10,
-    fontSize: 20,
-    marginLeft: 10,
-    marginTop: 30,
+  addressText: {
+    fontSize: 16,
+    color: colors.black,
   },
   activityItem: {
-    backgroundColor: 'white',
-    borderColor: '#0B666A',
+    backgroundColor: colors.mainBackground,
+    borderColor: colors.green,
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
@@ -181,32 +209,32 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     fontSize: 12,
-    color: 'gray',
+    color: colors.gray,
     marginTop: 5,
   },
-  mapContainer: {
-    backgroundColor: '#E5E5E5',
-    borderRadius: 10,
-    justifyContent: 'center',
-    height: 200,
-    marginLeft: 10,
-    width: '95%',
-  },
   chatButton: {
-    backgroundColor: '#0B666A',
+    backgroundColor: colors.green,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     borderRadius: 10,
-    marginTop: 50,
-    marginLeft: 10,
-    width: '95%',
+    margin: 20,
+    alignSelf: 'center',
+    width: '90%',
   },
   chatButtonText: {
     fontSize: 18,
-    color: 'white',
+    color: colors.white,
     marginLeft: 10,
+  },
+  copyIcon: {
+    marginBottom: 10,
+    marginLeft: 10,
+  },
+  contactValueContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 

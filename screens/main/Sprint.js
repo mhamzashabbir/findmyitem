@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import Loading from '../../components/Loading';
+import colors from '../../styles/colors';
 
 const StartPage = () => {
   return (
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.splashBackground,
     alignItems: 'center',
     justifyContent: 'flex-end',
   },

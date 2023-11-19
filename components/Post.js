@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import colors from '../styles/colors';
 
 const PostItem = ({ post }) => {
   return (
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 16,
-    borderColor: '#0B666A',
+    borderColor: colors.green,
     borderWidth: 1,
     borderRadius: 8,
   },
@@ -39,12 +40,12 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    color: 'gray',
+    color: colors.gray,
     marginBottom: 4,
   },
   date: {
     fontSize: 14,
-    color: 'lightgray',
+    color: colors.lightgray,
     marginBottom: 4,
   },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
+import colors from '../styles/colors';
 
 const RecentListings = ({ data, onPressListing }) => {
   return (
@@ -49,20 +50,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     textAlign: 'center',
-    color : '#0B666A'
+    color : colors.green
   },
   listingTitle: {
     marginTop: 5,
     fontSize: 16,
     fontWeight: '500',
     textAlign: 'center',
-    color : 'black'
+    color : colors.black
   },
   listingDate: {
     marginTop: 5,
     fontSize: 14,
     fontWeight: '500',
-    color: 'gray',
+    color: colors.gray,
     textAlign: 'center',
   }
 });

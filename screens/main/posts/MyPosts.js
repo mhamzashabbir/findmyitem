@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import PostItem from '../../../components/Post';
 import SearchBar from '../../../components/SearchBar';
 import postsData from '../../../data/items';
+import colors from '../../../styles/colors';
 
 const PostsScreen = ({ navigation }) => {
 
@@ -24,7 +25,7 @@ const PostsScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Your Posts</Text>
+      <Text style={styles.title}>My Posts</Text>
 
       <SearchBar width={'100%'} handleSearch={handleSearch}/>
 
@@ -44,21 +45,16 @@ const PostsScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.mainBackground,
     padding: 16,
     width: '100%',
   },
-  search: {
-    width: '100%',
-    backgroundColor: '#0B666A',
-    marginBottom: 16
-  },
   title: {
-
     fontSize: 24,
     fontWeight: '700',
     marginBottom: 16,
     marginTop: 50,
+    color : colors.green,
   },
 });
 

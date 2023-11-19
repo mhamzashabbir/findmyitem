@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, Pressable, ScrollView, TextInput } from 'react-native';
-import CustomButton from '../../../components/CustomButton';
-import BackButton from '../../../components/Back';
-import { FontAwesome } from '@expo/vector-icons';
+import React, {useState} from 'react';
+import { View, Text, Image, Pressable, TextInput, FlatList, StyleSheet } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Toast from 'react-native-toast-message';
-import colors from '../../../styles/colors';
+import colors from '../styles/colors';
+import CustomButton from './CustomButton';
 
-const UserPostDetails = ({ route, navigation }) => {
-  const { name, title, description, date, imageUrl, address, category } = route.params;
-
+const PostList = ({ data , handleContact, category }) => {
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([
     { id: '1', user: 'John Doe', text: 'This is mine, lost it few days back' },
     { id: '2', user: 'Jane Smith', text: 'Great work' },
   ]);
+  const [posts, setPosts] = useState(data.filter((post) => post.category === category));
 
   const handleSavePost = () => {
     Toast.show({
@@ -22,82 +20,102 @@ const UserPostDetails = ({ route, navigation }) => {
       text1: 'Post Saved',
       text2: 'Your post has been saved successfully',
     });
-  };
-
-  const handleContact = () => {
-    navigation.navigate('UserContact');
   }
 
-  const handleCommentSubmit = () => {
+
+  const handleCommentSubmit = ({ item }) => {
+    if (!item) {
+      console.error('Item is undefined');
+      return;
+    }
+
     if (commentText.trim() !== '') {
       const newComment = {
         id: String(comments.length + 1),
-        user: name ,
+        user: item.name,
         text: commentText,
       };
-      setComments([...comments, newComment]);
+      item.comments = [...item.comments, newComment];
+      setComments([...comments]);
       setCommentText('');
     }
   };
 
-  return (
-    <ScrollView style={styles.container}>
 
-      <BackButton onPress={() => navigation.goBack()} />
+
+  const renderItem = ({ item }) => (
+    <View style={styles.postContainer}>
       <View style={styles.userInfoContainer}>
-        <Text style={styles.userName}>{name}</Text>
-        <Text style={styles.date}>{date}</Text>
+        <Text style={styles.userName}>{item.name}</Text>
+        <Text style={styles.date}>{item.date}</Text>
       </View>
-
       <View style={styles.separator} />
 
       <View style={styles.itemDetailsContainer}>
         <View style={styles.savePostContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Pressable style={styles.commentSubmitButton} onPress={handleSavePost}>
-          <FontAwesome name="bookmark" size={24} color={colors.white} />
-        </Pressable>
+          <Text style={styles.title}>{item.title}</Text>
+          <View style={styles.savePost}>
+            <FontAwesome name="bookmark" size={24} color={colors.green} onPress={handleSavePost}/>
+          </View>
         </View>
-        <Image source={{ uri: imageUrl }} style={styles.image} />
-        <Text style={styles.description}>{description}</Text>
+        <Image source={{ uri: item.imageUrl }} style={styles.image} />
+        <Text style={styles.description}>{item.description}</Text>
 
         <View style={styles.additionalDetailsContainer}>
-          <Text style={styles.category}>{category}</Text>
-          <Text style={styles.address}>Address: {address}</Text>
+          <Text style={styles.category}>{item.category}</Text>
+          <Text style={styles.address}>Address: {item.address}</Text>
         </View>
       </View>
+      <View style={styles.separator} />
 
-      <CustomButton text={"Contact " + (category == 'Found' ? 'Finder' : 'Owner') } handleButton={handleContact} width={'90%'} height={40} border={10} />
+      <CustomButton text={"Contact " + (item.category == 'Found' ? 'Finder' : 'Owner') } handleButton={() => handleContact(item)} width={'90%'} height={40} border={10} />
 
       <View style={styles.commentInputContainer}>
         <TextInput
           style={styles.commentInput}
           placeholder="Add a comment..."
           value={commentText}
-          onChangeText={text => setCommentText(text)}
+          onChangeText={(text) => setCommentText(text)}
         />
-        <Pressable style={styles.commentSubmitButton} onPress={handleCommentSubmit}>
+        <Pressable
+          style={styles.commentSubmitButton}
+          onPress={() => handleCommentSubmit({ item })}
+        >
           <FontAwesome name="paper-plane" size={24} color={colors.white} />
         </Pressable>
       </View>
 
       <View style={styles.commentsContainer}>
         <Text style={styles.commentsHeader}>Comments</Text>
-        {comments.map(comment => (
-          <View key={comment.id} style={styles.commentItem}>
-            <Text style={styles.commentUser}>{comment.user}</Text>
-            <Text style={styles.commentText}>{comment.text}</Text>
-          </View>
-        ))}
+        {item.comments &&
+          item.comments.map((comment) => (
+            <View key={comment.id} style={styles.commentItem}>
+              <Text style={styles.commentUser}>{comment.user}</Text>
+              <Text style={styles.commentText}>{comment.text}</Text>
+            </View>
+          ))}
       </View>
-    </ScrollView>
+    </View>
+  );
+
+  return (
+    <FlatList
+      data={posts}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={renderItem}
+    />
   );
 };
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.mainBackground,
+  postContainer: {
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: 'white',
   },
   userInfoContainer: {
     flexDirection: 'row',
@@ -107,7 +125,7 @@ const styles = StyleSheet.create({
   },
   savePostContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   userName: {
     fontSize: 18,
@@ -155,25 +173,10 @@ const styles = StyleSheet.create({
     color: colors.gray,
     marginBottom: 10,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  savePost: {
+    justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 20,
   },
-  saveButtonContainer: {
-    backgroundColor: colors.green,
-    paddingVertical: 12,
-    alignItems: 'center',
-    marginVertical: 10,
-    borderRadius: 8,
-  },
-  saveButtonText: {
-    color: colors.white,
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-
   commentsContainer: {
     margin:   16,
   },
@@ -219,4 +222,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserPostDetails;
+export default PostList;

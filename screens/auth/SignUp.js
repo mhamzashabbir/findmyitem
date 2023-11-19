@@ -5,6 +5,7 @@ import ModalDropdown from 'react-native-modal-dropdown';
 
 import countries from '../../data/countries';
 import CustomButton from '../../components/CustomButton';
+import colors from '../../styles/colors';
 
 const SignUp = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -37,7 +38,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="account-circle" size={24} color="#0B666A" style={styles.icon} />
+            <MaterialIcons name="account-circle" size={24} color={colors.iconColor} style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Username"
@@ -49,7 +50,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="email" size={24} color="#0B666A" style={styles.icon} />
+            <MaterialIcons name="email" size={24} color={colors.iconColor} style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Email"
@@ -61,7 +62,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="phone" size={24} color="#0B666A" style={styles.icon} />
+            <MaterialIcons name="phone" size={24} color={colors.iconColor} style={styles.icon} />
             <ModalDropdown
               options={countries.map((country) => `${country.name} (${country.dial_code})`)}
               defaultValue={`${countries[0].name} (${countries[0].dial_code})`}
@@ -81,7 +82,7 @@ const SignUp = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <View style={styles.inputWithIcon}>
-            <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
+            <MaterialIcons name="lock" size={24} color={colors.iconColor} style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter your Password"
@@ -93,14 +94,14 @@ const SignUp = ({ navigation }) => {
               <FontAwesome
                 name={showPassword ? "eye" : "eye-slash"}
                 size={24}
-                color="#0B666A"
+                color={colors.iconColor}
                 style={styles.showPasswordIcon}
               />
             </Pressable>
           </View>
         </View>
 
-        <CustomButton text="SignUp" margin={40} handleButton={handleSignUp} />
+        <CustomButton text="SignUp" margin={40} handleButton={handleSignUp} width={'84%'} border={10} />
 
         <View style={styles.loginContainer}>
           <Text style={styles.loginText}>Already have an account?</Text>
@@ -117,10 +118,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.authBackground,
   },
   heading: {
-    color: '#000',
+    color: colors.black,
     fontSize: 30,
     fontWeight: '700',
     lineHeight: 30,
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   input: {
     width: '70%',
     height: '70%',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 20,
     paddingHorizontal: 16,
     marginHorizontal: 16,
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
   inputphone: {
     width: '50%',
     height: '70%',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 20,
     paddingHorizontal: 16,
     marginHorizontal: 16,
@@ -156,8 +157,8 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '90%',
     marginLeft: 20,
-    backgroundColor: '#97FEED',
-    borderRadius: 20,
+    backgroundColor: colors.inputBackground,
+    borderRadius: 10,
     marginTop: 10,
   },
   icon: {
@@ -168,12 +169,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   loginText: {
-    color: '#000',
+    color: colors.black,
     fontSize: 18,
     fontWeight: '700',
   },
   loginLink: {
-    color: '#0B666A',
+    color: colors.green,
     fontSize: 18,
     fontWeight: '700',
     marginLeft: 5,
@@ -186,7 +187,7 @@ const styles = StyleSheet.create({
     height: '50%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 20,
     marginLeft: 10,
   },

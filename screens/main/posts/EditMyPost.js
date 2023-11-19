@@ -3,6 +3,8 @@ import { View, Text, Image, StyleSheet, ScrollView, TextInput } from 'react-nati
 import CustomButton from '../../../components/CustomButton';
 import BackButton from '../../../components/Back';
 import postsData from '../../../data/items';
+import colors from '../../../styles/colors';
+import Toast from 'react-native-toast-message';
 
 const EditMyPost = ({ route, navigation }) => {
   const {name, title, description, date, imageUrl, address, category } = route.params;
@@ -14,6 +16,12 @@ const EditMyPost = ({ route, navigation }) => {
   const [dynamicPostsData, setDynamicPostsData] = useState(postsData);
 
   const handleSaveChanges = () => {
+    Toast.show({
+      type: 'success',
+      position: 'top',
+      text1: 'Post Updated',
+      text2: 'Your post has been updated successfully',
+    })
     navigation.goBack();
   };
 
@@ -58,7 +66,7 @@ const EditMyPost = ({ route, navigation }) => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <CustomButton text={'Save Changes'} handleButton={handleSaveChanges} width={'90%'} height={40} border={10} />
+        <CustomButton text={'Save Changes'} handleButton={handleSaveChanges} width={'90%'} height={40} border={10} marginLeft={17} />
       </View>
 
     </ScrollView>
@@ -68,7 +76,7 @@ const EditMyPost = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.mainBackground,
   },
   userInfoContainer: {
     flexDirection: 'row',
@@ -79,15 +87,15 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#0B666A',
+    color: colors.green,
   },
   date: {
     fontSize: 14,
-    color: 'gray',
+    color: colors.gray,
   },
   separator: {
     height: 1,
-    backgroundColor: '#0B666A',
+    backgroundColor: colors.green,
     marginVertical: 16,
   },
   itemDetailsContainer: {
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   editInput: {
-    borderColor: '#0B666A',
+    borderColor: colors.green,
     borderWidth: 1,
     borderRadius: 8,
     padding: 8,
@@ -118,7 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#0B666A',
+    color: colors.green,
   },
   buttonContainer: {
     marginBottom: 20,
