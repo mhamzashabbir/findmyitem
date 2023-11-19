@@ -4,6 +4,7 @@ import { MaterialIcons , FontAwesome } from '@expo/vector-icons';
 
 
 import CustomButton from '../../components/CustomButton';
+import colors from '../../styles/colors';
 
 const ResetPasswordConfirm = ({ navigation }) => {
   const [password, setPassword] = useState('');
@@ -21,7 +22,7 @@ const ResetPasswordConfirm = ({ navigation }) => {
 
       <View style={styles.inputContainer}>
         <View style={styles.inputWithIcon}>
-          <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
+          <MaterialIcons name="lock" size={24} color={colors.iconColor} style={styles.icon} />
           <TextInput
             style={styles.input}
             placeholder="Enter your Password"
@@ -33,7 +34,7 @@ const ResetPasswordConfirm = ({ navigation }) => {
             <FontAwesome
               name={showPassword ? "eye" : "eye-slash"}
               size={24}
-              color="#0B666A"
+              color={colors.iconColor}
               style={styles.showPasswordIcon}
             />
           </Pressable>
@@ -42,7 +43,7 @@ const ResetPasswordConfirm = ({ navigation }) => {
 
       <View style={styles.inputContainer}>
         <View style={styles.inputWithIcon}>
-          <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
+          <MaterialIcons name="lock" size={24} color={colors.iconColor} style={styles.icon} />
           <TextInput
             style={styles.input}
             placeholder="Confirm your Password"
@@ -54,7 +55,7 @@ const ResetPasswordConfirm = ({ navigation }) => {
             <FontAwesome
               name={showConfirmPassword ? "eye" : "eye-slash"}
               size={24}
-              color="#0B666A"
+              color={colors.iconColor}
               style={styles.showPasswordIcon}
             />
           </Pressable>
@@ -72,10 +73,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.authBackground,
   },
   heading: {
-    color: '#000',
+    color: colors.black,
     fontSize: 30,
     fontWeight: '700',
     lineHeight: 30,
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
   input: {
     width: '70%',
     height: '70%',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     paddingHorizontal: 16,
     marginHorizontal: 16,
     marginLeft: 0,
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '90%',
     marginLeft: 20,
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 10,
     marginTop: 10,
   },

@@ -3,14 +3,8 @@ import { View, Text, TextInput, StyleSheet, Pressable, KeyboardAvoidingView , Sc
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
 import CustomButton from '../../components/CustomButton';
-
-const Checkbox = ({ checked, onChange }) => (
-  <Pressable onPress={onChange}>
-    <View style={[styles.checkbox, checked && styles.checked]}>
-      {checked && <Text style={styles.checkmark}>✓</Text>}
-    </View>
-  </Pressable>
-);
+import colors from '../../styles/colors';
+import Checkbox from '../../components/Checkbox';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -45,7 +39,7 @@ const Login = ({navigation}) => {
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Email</Text>
             <View style={styles.inputWithIcon}>
-              <MaterialIcons name="email" size={24} color="#0B666A" style={styles.icon} />
+              <MaterialIcons name="email" size={24} color={colors.iconColor} style={styles.icon} />
               <TextInput
                 style={styles.input}
                 placeholder="Enter your Email"
@@ -58,7 +52,7 @@ const Login = ({navigation}) => {
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Password</Text>
             <View style={styles.inputWithIcon}>
-              <MaterialIcons name="lock" size={24} color="#0B666A" style={styles.icon} />
+              <MaterialIcons name="lock" size={24} color={colors.iconColor} style={styles.icon} />
               <TextInput
                 style={styles.input}
                 placeholder="Enter your Password"
@@ -67,7 +61,7 @@ const Login = ({navigation}) => {
                 onChangeText={text => setPassword(text)}
               />
               <Pressable onPress={() => setShowPassword(!showPassword)}>
-                <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="#0B666A" style={styles.showPasswordIcon} />
+                <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color={colors.iconColor} style={styles.showPasswordIcon} />
               </Pressable>
             </View>
           </View>
@@ -100,10 +94,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.authBackground,
   },
   heading: {
-    color: '#000',
+    color: colors.black,
     fontSize: 30,
     fontWeight: '700',
     lineHeight: 30,
@@ -125,7 +119,7 @@ const styles = StyleSheet.create({
   input: {
     width: '70%',
     height: '70%',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     paddingHorizontal: 16,
     marginHorizontal: 16,
     marginLeft: 0,
@@ -136,7 +130,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '90%',
     marginLeft: 20,
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 10,
     marginTop: 10,
   },
@@ -146,33 +140,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 20,
   },
-  icon: {
-    marginLeft: 10,
-  },
-  checkbox: {
-    width: 24,
-    height: 24,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-  },
-  checked: {
-    backgroundColor: '#97FEED',
-  },
-  checkmark: {
-    color: '#000',
-  },
   checkboxText: {
     color: '#000',
     fontSize: 15,
     fontWeight: '700',
     marginLeft: 10,
   },
+  icon: {
+    marginLeft: 10,
+  },
   forgotPasswordText: {
-    color: '#0B666A',
+    color: colors.green,
     fontSize: 15,
     fontWeight: '700',
     marginLeft: 40,
@@ -182,12 +160,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   signUpText: {
-    color: '#000',
+    color: colors.black,
     fontSize: 18,
     fontWeight: '700',
   },
   signUpLink: {
-    color: '#0B666A',
+    color: colors.green,
     fontSize: 18,
     fontWeight: '700',
     marginLeft: 5,

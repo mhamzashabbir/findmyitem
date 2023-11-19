@@ -5,6 +5,8 @@ import BackButton from '../../../components/Back';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { FontAwesome } from '@expo/vector-icons';
 import { Alert } from 'react-native';
+import colors from '../../../styles/colors';
+import Toast from 'react-native-toast-message';
 
 const MyPostDetails = ({ route, navigation }) => {
   const { name, title, description, date, imageUrl, address, category } = route.params;
@@ -39,7 +41,15 @@ const MyPostDetails = ({ route, navigation }) => {
         },
         {
           text: 'Delete',
-          onPress: () => navigation.navigate('MyPosts')
+          onPress: () => {
+            Toast.show({
+              type: 'success',
+              position: 'top',
+              text1: 'Post Deleted',
+              text2: 'Your post has been deleted successfully',
+            })
+            navigation.navigate('MyPosts')
+          }
         }
       ]
     );
@@ -72,7 +82,7 @@ const MyPostDetails = ({ route, navigation }) => {
         <View style={styles.deletePostContainer}>
         <Text style={styles.title}>{title}</Text>
         <Pressable style={styles.commentSubmitButton} onPress={handleEditPost}>
-          <FontAwesome5 name="pen" size={20} color="white" />
+          <FontAwesome5 name="pen" size={20} color={colors.white} />
         </Pressable>
         </View>
         <Image source={{ uri: imageUrl }} style={styles.image} />
@@ -94,7 +104,7 @@ const MyPostDetails = ({ route, navigation }) => {
           onChangeText={text => setCommentText(text)}
         />
         <Pressable style={styles.commentSubmitButton} onPress={handleCommentSubmit}>
-          <FontAwesome name="paper-plane" size={24} color="white" />
+          <FontAwesome name="paper-plane" size={24} color={colors.white} />
         </Pressable>
       </View>
 
@@ -114,7 +124,7 @@ const MyPostDetails = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.mainBackground,
   },
   userInfoContainer: {
     flexDirection: 'row',
@@ -129,7 +139,7 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#0B666A',
+    color: colors.green,
   },
   date: {
     fontSize: 14,
@@ -137,7 +147,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 1,
-    backgroundColor: '#0B666A',
+    backgroundColor: colors.green,
     marginVertical: 16,
   },
   itemDetailsContainer: {
@@ -165,11 +175,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#0B666A',
+    color: colors.green,
   },
   address: {
     fontSize: 16,
-    color: 'gray',
+    color: colors.gray,
     marginBottom: 10,
   },
   buttonContainer: {
@@ -178,19 +188,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 20,
   },
-  saveButtonContainer: {
-    backgroundColor: '#0B666A',
-    paddingVertical: 12,
-    alignItems: 'center',
-    marginVertical: 10,
-    borderRadius: 8,
-  },
-  saveButtonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-
   commentsContainer: {
     margin:   16,
   },
@@ -204,10 +201,10 @@ const styles = StyleSheet.create({
   },
   commentUser: {
     fontWeight: 'bold',
-    color: '#0B666A',
+    color: colors.green,
   },
   commentText: {
-    color: 'black',
+    color: colors.black,
   },
   commentInputContainer: {
     flexDirection: 'row',
@@ -217,20 +214,20 @@ const styles = StyleSheet.create({
   },
   commentInput: {
     flex: 1,
-    borderColor: '#0B666A',
+    borderColor: colors.green,
     borderWidth: 1,
     borderRadius: 8,
     padding: 8,
     marginRight: 10,
   },
   commentSubmitButton: {
-    backgroundColor: '#0B666A',
+    backgroundColor: colors.green,
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 8,
   },
   commentSubmitButtonText: {
-    color: 'white',
+    color: colors.white,
     fontSize: 16,
     fontWeight: 'bold',
   },
@@ -240,7 +237,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   editInput: {
-    borderColor: '#0B666A',
+    borderColor: colors.green,
     borderWidth: 1,
     borderRadius: 8,
     padding: 8,

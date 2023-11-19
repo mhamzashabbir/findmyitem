@@ -3,6 +3,8 @@ import { View, Text, TextInput, StyleSheet, SafeAreaView, Image, ScrollView } fr
 import { FontAwesome } from '@expo/vector-icons';
 import CustomButton from '../../../components/CustomButton';
 import BackButton from '../../../components/Back';
+import Toast from 'react-native-toast-message';
+import colors from '../../../styles/colors';
 
 const EditProfile = ({ navigation, route }) => {
 
@@ -20,6 +22,12 @@ const EditProfile = ({ navigation, route }) => {
       updatedPhone: phone,
       updatedAddress: address,
     });
+    Toast.show({
+      type: 'success',
+      position: 'top',
+      text1: 'Profile Updated',
+      text2: 'Your profile has been updated successfully.',
+    });
   };
 
   return (
@@ -34,7 +42,7 @@ const EditProfile = ({ navigation, route }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Name</Text>
           <View style={styles.inputWithIcon}>
-              <FontAwesome name="user" size={24} color="#0B666A" style={styles.icon} />
+              <FontAwesome name="user" size={24} color={colors.iconColor} style={styles.icon} />
               <TextInput
                 style={styles.input}
                 value={name}
@@ -46,7 +54,7 @@ const EditProfile = ({ navigation, route }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Email</Text>
           <View style={styles.inputWithIcon}>
-              <FontAwesome name="envelope" size={24} color="#0B666A" style={styles.icon} />
+              <FontAwesome name="envelope" size={24} color={colors.iconColor} style={styles.icon} />
               <TextInput
                 style={styles.input}
                 value={email}
@@ -58,7 +66,7 @@ const EditProfile = ({ navigation, route }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Phone</Text>
           <View style={styles.inputWithIcon}>
-              <FontAwesome name="phone" size={24} color="#0B666A" style={styles.icon} />
+              <FontAwesome name="phone" size={24} color={colors.iconColor} style={styles.icon} />
               <TextInput
                 style={styles.input}
                 value={phone}
@@ -71,7 +79,7 @@ const EditProfile = ({ navigation, route }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Address</Text>
           <View style={styles.inputWithIcon}>
-              <FontAwesome name="location-arrow" size={30} color="#0B666A" style={styles.icon} />
+              <FontAwesome name="location-arrow" size={30} color={colors.iconColor} style={styles.icon} />
               <TextInput
                 style={styles.input}
                 value={address}
@@ -89,7 +97,7 @@ const EditProfile = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.mainBackground,
   },
   profileContainer: {
     alignItems: 'center',
@@ -109,13 +117,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
     marginVertical: 5,
   },
   input: {
     width: '100%',
     height: 40,
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 10,
     paddingHorizontal: 16,
   },
@@ -124,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '90%',
     height: '40',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 10,
   },
   icon: {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable, ScrollView } from 'react-native';
+import colors from '../../styles/colors';
 
 
 
@@ -52,10 +53,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.authBackground,
   },
   heading: {
-    color: '#000',
+    color: colors.black,
     fontSize: 30,
     fontWeight: '700',
     lineHeight: 30,
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     marginBottom: 80,
   },
   subtitle: {
-    color: '#000',
+    color: colors.black,
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 50,
@@ -77,15 +78,15 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderWidth: 1,
-    borderColor: '#97FEED',
-    backgroundColor: '#97FEED',
+    borderColor: colors.cgreen,
+    backgroundColor: colors.cgreen,
     borderRadius: 10,
     textAlign: 'center',
     marginHorizontal: 10,
     fontSize: 20,
   },
   resendCodeText: {
-    color: '#0B666A',
+    color: colors.green,
     fontSize: 15,
     fontWeight: '700',
     marginLeft: 160,

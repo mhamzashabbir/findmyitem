@@ -4,6 +4,7 @@ import { MaterialIcons} from '@expo/vector-icons';
 
 
 import CustomButton from '../../components/CustomButton';
+import colors from '../../styles/colors';
 
 const ResetPasswordStart = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ const ResetPasswordStart = ({ navigation }) => {
 
       <View style={styles.inputContainer}>
         <View style={styles.inputWithIcon}>
-          <MaterialIcons name="email" size={24} color="#0B666A" style={styles.icon} />
+          <MaterialIcons name="email" size={24} color={colors.iconColor} style={styles.icon} />
           <TextInput
             style={styles.input}
             placeholder="Enter your Email"
@@ -39,17 +40,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.authBackground,
   },
   heading: {
-    color: '#000',
+    color: colors.black,
     fontSize: 30,
     fontWeight: '700',
     lineHeight: 30,
     marginTop: 50,
   },
   text: {
-    color: '#000',
+    color: colors.black,
     fontStyle: 'normal',
     fontWeight: '400',
     textAlign: 'center',
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
   input: {
     width: '70%',
     height: '70%',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 20,
     paddingHorizontal: 16,
     marginHorizontal: 16,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '90%',
     marginLeft: 20,
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.inputBackground,
     borderRadius: 10,
     marginTop: 10,
   },

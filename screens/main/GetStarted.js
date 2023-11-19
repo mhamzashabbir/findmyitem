@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 import CustomButton from '../../components/CustomButton';
+import colors from '../../styles/colors';
 
 const StartPage = ({navigation}) => {
 
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.splashBackground,
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     top: 200,
   },
   text: {
-    color: '#000',
+    color: colors.black,
     fontSize: 18,
     fontStyle: 'normal',
     fontWeight: '400',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import colors from '../styles/colors';
 
 const SearchBar = (props) => {
 
@@ -10,7 +11,7 @@ const SearchBar = (props) => {
       width: props.width || '90%',
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: '#97FEED',
+      backgroundColor: colors.searchBackground,
       borderRadius: 10,
       paddingHorizontal: 15,
       margin: props.margin || 20,
@@ -22,7 +23,7 @@ const SearchBar = (props) => {
     input: {
       flex: 1,
       fontSize: 18,
-      color: '#000',
+      color: colors.searchPlaceholder,
     },
   });
 
@@ -32,10 +33,10 @@ const SearchBar = (props) => {
       <TextInput
         placeholder="Search your item here..."
         style={styles.input}
-        placeholderTextColor="#000"
+        placeholderTextColor={colors.black}
       />
       <Pressable onPress={handleSearch}>
-        <FontAwesome name="search" size={24} color="#000" style={styles.searchIcon} />
+        <FontAwesome name="search" size={24} color={colors.black} style={styles.searchIcon} />
       </Pressable>
     </View>
   );

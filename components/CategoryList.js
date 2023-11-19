@@ -2,18 +2,15 @@ import React from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet, Image } from 'react-native';
 import data from '../data/items';
 import CustomButton from './CustomButton';
+import colors from '../styles/colors';
 
-const CategoryList = ({ onPressItem, category }) => {
+const CategoryList = ({ onPressItem, category, handleViewListing }) => {
   const renderItem = ({ item }) => (
     <Pressable style={styles.listItem} onPress={() => onPressItem(item)}>
       <Image source={{ uri: item.imageUrl }} style={styles.itemImage} />
       <Text style={styles.itemTitle}>{item.title}</Text>
     </Pressable>
   );
-
-  const handleViewListing = () => {
-    // Implement the View All functionality here if needed
-  };
 
   return (
     <View style={styles.container}>
@@ -57,14 +54,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 10,
     textAlign: 'center',
-    color: '#0B666A',
+    color: colors.green,
   },
   listItem: {
     padding: 10,
     borderRadius: 10,
     overflow: 'hidden',
     marginRight: 10,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     elevation: 2,
   },
   itemImage: {
@@ -78,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     textAlign: 'center',
-    color: '#333333',
+    color: colors.black,
   },
   listContainer: {
     paddingBottom: 10,

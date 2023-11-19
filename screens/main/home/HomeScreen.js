@@ -6,6 +6,7 @@ import RecentListings from '../../../components/RecentListing';
 import CustomButton from '../../../components/CustomButton';
 import recentListings from '../../../data/items';
 import CategoryList from '../../../components/CategoryList';
+import colors from '../../../styles/colors';
 
 const name = 'Hamza';
 
@@ -46,10 +47,18 @@ const Home = ({navigation}) => {
     navigation.navigate('Profile');
   }
 
+  handleViewAllLost = () => {
+    navigation.navigate('AllPosts' , {category: 'Lost'});
+  }
+
+  handleViewAllFound = () => {
+    navigation.navigate('AllPosts', {category: 'Found'});
+  }
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false} >
       <View style={styles.GreetingContainer}>
-        <FontAwesome name="user-circle" size={35} color='#0B666A' style={styles.userIcon} onPress={handleUser} />
+        <FontAwesome name="user-circle" size={35} color={colors.iconColor} style={styles.userIcon} onPress={handleUser} />
         <Text style={styles.greetingText}>Hi, {name} </Text>
       </View>
         <SearchBar marginleft={20} handleSearch={handleSearch}/>
@@ -59,13 +68,13 @@ const Home = ({navigation}) => {
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionText}>Found Anything?</Text>
         <Text style={styles.descriptionText}>Here are some of the items people lost. You can check the listing and contact the owner to return them there belongings.Your little effort can make their day.</Text>
-        <CategoryList onPressItem={handleRecentListing} category="Lost" />
+        <CategoryList onPressItem={handleRecentListing} category="Lost" handleViewListing={handleViewAllLost} />
       </View>
 
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionText}>Lost Anything?</Text>
         <Text style={styles.descriptionText}>Here are some of the items people found. You can find your item in the listing and contact the finder for your belongings. Don't forget to thank them.</Text>
-        <CategoryList onPressItem={handleRecentListing} category="Found" />
+        <CategoryList onPressItem={handleRecentListing} category="Found" handleViewListing={handleViewAllFound} />
       </View>
 
       {/* <View style={styles.separator} /> */}
@@ -78,7 +87,7 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: colors.mainBackground
   },
   GreetingContainer: {
     marginTop: 50,
@@ -87,7 +96,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   greetingText: {
-    color: 'black',
+    color: colors.black,
     fontSize: 25,
     fontWeight: '700',
   },
@@ -99,24 +108,24 @@ const styles = StyleSheet.create({
     width: '90%' ,
     height: 150,
     borderRadius: 30,
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.mainBackground,
     margin: 20,
   },
   itemContainer: {
     width: '90%' ,
     height: 150,
     borderRadius: 30,
-    backgroundColor: 'white',
-    borderColor: '#0B666A',
+    backgroundColor: colors.mainBackground,
+    borderColor: colors.green,
     borderWidth: 2,
     margin: 20,
   },
   sectionContainer: {
-    borderColor: '#0B666A',
+    borderColor: colors.green,
     width: '95%' ,
     borderWidth: 1,
     alignSelf: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.mainBackground,
     borderStyle: 'dotted',
     borderRadius: 10,
     marginBottom: 20,
@@ -124,21 +133,21 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 18,
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
     margin: 20,
     textAlign: 'center',
   },
   descriptionText: {
     fontSize: 16,
     fontWeight: '300',
-    color: 'gray',
+    color: colors.gray,
     marginLeft: 20,
     marginRight: 20,
   },
   sectionText: {
     fontSize: 20,
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
     marginLeft: 20,
     marginTop: 20,
   },
@@ -148,14 +157,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
   },
-  listItem: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E5E5',
-  },
   separator: {
     height: 1,
-    backgroundColor: '#0B666A',
+    backgroundColor: colors.green,
     marginVertical: 16,
   },
 });

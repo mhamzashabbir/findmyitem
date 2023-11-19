@@ -5,6 +5,7 @@ import {FontAwesome} from '@expo/vector-icons';
 import Map from '../../../components/Map';
 import { Clipboard } from 'react-native';
 import Toast from 'react-native-toast-message';
+import colors from '../../../styles/colors';
 
 const recentActivity = [
   { id: 1, action: 'Posted a listing', timestamp: '2 hours ago' },
@@ -28,6 +29,7 @@ const copyToClipboard = (text) => {
     type: 'success',
     position: 'top',
     text1: 'Copied to clipboard',
+    text2: 'You can paste it anywhere now',
   });
 
 };
@@ -70,10 +72,10 @@ const UserContact = () => {
           </View>
           <View style={styles.copyContainer}>
             <Pressable onPress={() => copyToClipboard(phone)}>
-                <FontAwesome5 name="copy" size={20} color="#0B666A" style={styles.copyIcon} />
+                <FontAwesome5 name="copy" size={20} color={colors.iconColor} style={styles.copyIcon} />
             </Pressable>
             <Pressable onPress={() => copyToClipboard(email)}>
-              <FontAwesome5 name="copy" size={20} color="#0B666A" style={styles.copyIcon} />
+              <FontAwesome5 name="copy" size={20} color={colors.iconColor} style={styles.copyIcon} />
             </Pressable>
           </View>
         </View>
@@ -83,7 +85,7 @@ const UserContact = () => {
         <View style={styles.addressRow}>
           <Text style={styles.sectionTitle}>Address</Text>
           <Pressable onPress={() => copyToClipboard(address)}>
-            <FontAwesome5 name="copy" size={20} color="#0B666A" style={styles.copyIcon} />
+            <FontAwesome5 name="copy" size={20} color={colors.iconColor} style={styles.copyIcon} />
           </Pressable>
         </View>
         <Text style={styles.addressText}>{address}</Text>
@@ -99,7 +101,7 @@ const UserContact = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {recentActivity.map((activity) => (
             <View key={activity.id} style={styles.activityItem}>
-              <FontAwesome5 name="history" size={20} color="#0B666A" style={styles.activityIcon} />
+              <FontAwesome5 name="history" size={20} color={colors.iconColor} style={styles.activityIcon} />
               <View style={styles.activityText}>
                 <Text>{activity.action}</Text>
                 <Text style={styles.timestamp}>{activity.timestamp}</Text>
@@ -110,7 +112,7 @@ const UserContact = () => {
       </View>
 
       <Pressable style={styles.chatButton} onPress={handleChatPress}>
-        <FontAwesome name="comment" size={24} color="white" />
+        <FontAwesome name="comment" size={24} color={colors.white} />
         <Text style={styles.chatButtonText}>Chat</Text>
       </Pressable>
     </ScrollView>
@@ -120,7 +122,7 @@ const UserContact = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.mainBackground,
   },
   headerContainer: {
     alignItems: 'center',
@@ -139,11 +141,11 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 24,
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
     marginBottom: 10,
   },
   copyButton: {
-    color: '#0B666A',
+    color: colors.green,
     fontSize: 16,
     marginLeft: 30,
 
@@ -153,7 +155,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontWeight: '700',
-    color: 'black',
+    color: colors.black,
     marginBottom: 10,
     fontSize: 20,
   },
@@ -178,19 +180,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginRight: 5,
-    color: 'gray',
+    color: colors.gray,
   },
   contactValue: {
     fontSize: 16,
-    color: 'black',
+    color: colors.black,
   },
   addressText: {
     fontSize: 16,
-    color: 'black',
+    color: colors.black,
   },
   activityItem: {
-    backgroundColor: 'white',
-    borderColor: '#0B666A',
+    backgroundColor: colors.mainBackground,
+    borderColor: colors.green,
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
@@ -207,11 +209,11 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     fontSize: 12,
-    color: 'gray',
+    color: colors.gray,
     marginTop: 5,
   },
   chatButton: {
-    backgroundColor: '#0B666A',
+    backgroundColor: colors.green,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -223,7 +225,7 @@ const styles = StyleSheet.create({
   },
   chatButtonText: {
     fontSize: 18,
-    color: 'white',
+    color: colors.white,
     marginLeft: 10,
   },
   copyIcon: {
