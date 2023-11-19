@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import PostList from '../../../components/PostList';
 import postsData from '../../../data/items';
 import SearchBar from '../../../components/SearchBar';
+import colors from '../../../styles/colors';
 
 const AllPostsScreen = ({navigation , route}) => {
   const { category } = route.params;
@@ -20,6 +21,14 @@ const AllPostsScreen = ({navigation , route}) => {
     navigation.navigate('UserContact');
   };
 
+  handleSearch = () => {
+    Toast.show({
+      type: 'info',
+      position: 'top',
+      text1: 'Search Feature is not available yet',
+    })
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.tabContainer}>
@@ -36,7 +45,7 @@ const AllPostsScreen = ({navigation , route}) => {
           <Text style={styles.tabText}>Found Items</Text>
         </Pressable>
       </View>
-      <SearchBar width={'100%'}/>
+      <SearchBar width={'100%'} handleContact={handleSearch} />
       {activeTab === 'Lost' && <PostList data={lostPosts} handleContact={handleContact} category="Lost"/>}
       {activeTab === 'Found' && <PostList data={foundPosts} handleContact={handleContact} category="Found" />}
     </View>
@@ -62,7 +71,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
   },
   activeTab: {
-    borderBottomColor: 'blue', // Choose your active tab color
+    borderBottomColor: colors.green,
   },
   tabText: {
     fontSize: 16,

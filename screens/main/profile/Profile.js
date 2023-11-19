@@ -6,7 +6,7 @@ import colors from '../../../styles/colors';
 
 const Profile = ({navigation, route}) => {
 
-  const { updatedName, updatedEmail, updatedPhone, updatedAddress } = route.params || {};
+  const { updatedName, updatedEmail, updatedPhone, updatedAddress, updateProfileImage } = route.params || {};
 
 
   const handleEditProfile = () => {
@@ -15,6 +15,7 @@ const Profile = ({navigation, route}) => {
       currentEmail: updatedEmail,
       currentPhone: updatedPhone,
       currentAddress: updatedAddress,
+      currentProfileImage: updateProfileImage,
     });
   };
 
@@ -83,7 +84,7 @@ const Profile = ({navigation, route}) => {
       <View style={styles.profileContainer}>
 
         <Image
-          source={require('../../../assets/user.png')}
+          source={updateProfileImage || require('../../../assets/user.png')}
           style={styles.profileImage}
         />
 

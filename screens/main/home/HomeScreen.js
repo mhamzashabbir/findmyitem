@@ -7,6 +7,7 @@ import CustomButton from '../../../components/CustomButton';
 import recentListings from '../../../data/items';
 import CategoryList from '../../../components/CategoryList';
 import colors from '../../../styles/colors';
+import Toast from 'react-native-toast-message';
 
 const name = 'Hamza';
 
@@ -35,12 +36,16 @@ const Home = ({navigation}) => {
   }
 
   const handleCreatePost = () => {
-
+    navigation.navigate('CreatePost');
   }
 
 
-  handleSearch = (text) => {
-
+  handleSearch = () => {
+    Toast.show({
+      type: 'info',
+      position: 'top',
+      text1: 'Search Feature is not available yet',
+    })
   }
 
   handleUser = () => {

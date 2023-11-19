@@ -16,6 +16,8 @@ const SearchBar = (props) => {
       paddingHorizontal: 15,
       margin: props.margin || 20,
       marginLeft: props.marginleft || 0,
+      borderColor: colors.searchBorder,
+      borderWidth: 2,
     },
     searchIcon: {
       marginRight: 10,
