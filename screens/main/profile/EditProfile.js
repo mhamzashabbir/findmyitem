@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   input: {
-    width: '100%',
+    width: '80%',
     height: 40,
     backgroundColor: colors.inputBackground,
     borderRadius: 10,
@@ -156,10 +156,11 @@ const styles = StyleSheet.create({
   inputWithIcon: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '90%',
+    width: '100%',
     height: '40',
     backgroundColor: colors.inputBackground,
     borderRadius: 10,
+    borderWidth: 1,
   },
   icon: {
     marginLeft: 10,

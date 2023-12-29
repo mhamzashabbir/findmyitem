@@ -13,7 +13,7 @@ const colors = {
   back : '#0B666A',
   authBackground: 'white',
   iconColor: '#0B666A',
-  inputBackground: '#97FEED',
+  inputBackground: 'white',
   inputBorder: '#0B666A',
   splashBackground: '#97FEED',
   mainBackground: 'white',

@@ -39,7 +39,11 @@ const UserContact = () => {
   const [mapLayout, setMapLayout] = useState({ width: 0, height: 0 });
 
   const handleChatPress = () => {
-
+    Toast.show({
+      type: 'info',
+      position: 'top',
+      text1: 'Chat Feature is not available yet',
+    })
   };
 
   useEffect(() => {

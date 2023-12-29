@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.inputBackground,
     borderRadius: 10,
     marginTop: 10,
+    borderWidth: 1,
   },
   icon: {
     marginLeft: 10,
