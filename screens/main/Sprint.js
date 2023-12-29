@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-import Loading from '../components/Loading';
+import Loading from '../../components/Loading';
+import colors from '../../styles/colors';
 
 const StartPage = () => {
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../assets/logo.png')}
+        source={require('../../assets/logo.png')}
       />
       <Loading margin={40} />
     </View>
@@ -19,16 +20,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.splashBackground,
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
   image: {
-    width: 394,
-    height: 402,
+    width: 300,
+    height: 300,
     position: 'absolute',
-    top: 56,
-    left: -9,
+    top: 200,
   },
 });
 

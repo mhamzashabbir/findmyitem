@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import colors from '../styles/colors';
 
 
 const Loading = (props) => {
@@ -13,7 +14,7 @@ const Loading = (props) => {
     ellipse: {
       width: 15,
       height: 12,
-      backgroundColor: '#071952',
+      backgroundColor: colors.green,
       borderRadius: 9999,
       marginHorizontal: 10,
       transform: [{ scale: 1.5 }],

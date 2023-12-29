@@ -1,22 +1,23 @@
 import React from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
+import colors from '../../styles/colors';
 
-const StartPage = () => {
+const StartPage = ({navigation}) => {
 
   const handleButton = () => {
-    console.log('Button pressed');
+    navigation.navigate('Login');
   }
 
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../assets/logo.png')}
+        source={require('../../assets/logo.png')}
       />
       <Text style={styles.text}>Lost your item?</Text>
       <Text style={styles.text}>Don't worry we got you covered</Text>
-      <CustomButton text="Get Started" margin={40} handleButton={handleButton}/>
+      <CustomButton text="Get Started" margin={40} handleButton={handleButton} marginBottom={20} border={10} />
     </View>
   );
 };
@@ -26,19 +27,18 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
-    backgroundColor: '#97FEED',
+    backgroundColor: colors.splashBackground,
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
   image: {
-    width: 394,
-    height: 402,
+    width: 300,
+    height: 300,
     position: 'absolute',
-    top: 56,
-    left: -9,
+    top: 200,
   },
   text: {
-    color: '#000',
+    color: colors.black,
     fontSize: 18,
     fontStyle: 'normal',
     fontWeight: '400',
