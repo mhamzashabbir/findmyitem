@@ -1,19 +1,47 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable, KeyboardAvoidingView , ScrollView} from 'react-native';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
-
+import axios from 'axios';
+import Toast from 'react-native-toast-message';
 import CustomButton from '../../components/CustomButton';
 import colors from '../../styles/colors';
 import Checkbox from '../../components/Checkbox';
+import { useAuth } from '../../store/authProvider';
 
 const Login = ({navigation}) => {
+  const { setUser } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    navigation.replace('MainTab');
+
+    axios.post('https://findmyitem-api.vercel.app/login', {
+      email: email,
+      password: password,
+    }).then((response) => {
+
+      const { data } = response;
+      setUser(data.user);
+
+      Toast.show({
+        type: 'success',
+        position: 'top',
+        text1: 'Login Successful',
+        text2: 'You have been logged in successfully',
+      })
+
+      navigation.replace('MainTab');
+
+    }).catch((error) => {
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Login Failed',
+        text2: error?.response?.data?.error,
+      })
+    })
   };
 
   const handleSignup = () => {

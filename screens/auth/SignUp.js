@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import ModalDropdown from 'react-native-modal-dropdown';
+import axios from 'axios';
+import Toast from 'react-native-toast-message';
 
 import countries from '../../data/countries';
 import CustomButton from '../../components/CustomButton';
@@ -15,8 +17,36 @@ const SignUp = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [selectedCountryCode, setSelectedCountryCode] = useState('');
 
-  const handleSignUp = () => {
-    navigation.navigate('Login');
+
+  const handleSignUp = async () => {
+
+      console.log(username);
+
+      await axios.post('https://findmyitem-api.vercel.app/register', {
+        username: username,
+        email: email,
+        password: password,
+        phoneNumber: phoneNumber,
+        countryCode: selectedCountryCode,
+      }).then((response) => {
+        Toast.show({
+          type: 'success',
+          position: 'top',
+          text1: 'Registration Successful',
+          text2: 'Your account has been created successfully',
+        })
+
+        navigation.navigate('Login');
+
+      }).catch((error) => {
+        Toast.show({
+          type: 'error',
+          position: 'top',
+          text1: 'Registration Failed',
+          text2: error?.response?.data?.error,
+        })
+      })
+
   };
 
   const handleLogin = () => {

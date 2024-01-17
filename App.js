@@ -5,6 +5,7 @@ import Toast from 'react-native-toast-message';
 
 import StartPage from './screens/main/Sprint';
 import MainStack from './navigations/Navigation';
+import { AuthProvider } from './store/authProvider';
 
 const Stack = createStackNavigator();
 
@@ -25,10 +26,12 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
         <MainStack />
         <Toast />
-    </NavigationContainer>
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
 
