@@ -8,20 +8,13 @@ import recentListings from '../../../data/items';
 import CategoryList from '../../../components/CategoryList';
 import colors from '../../../styles/colors';
 import Toast from 'react-native-toast-message';
-
-const name = 'Hamza';
-
+import { useAuth } from '../../../store/authProvider';
 
 const Home = ({navigation}) => {
 
-  // const recentListings = [
-  //   { id: 1, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
-  //   { id: 2, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
-  //   { id: 3, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
-  //   { id: 4, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
-  //   { id: 5, title: 'Lost Phone', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStHaRrepIEifJiPZIzE86XRDvsMHrnihrDbuBdMta80bUQ0vRSwmtf9_jlE-qDvSHUdxg&usqp=CAU' },
-  //   { id: 6, title: 'Found Keys', image: 'https://p7.hiclipart.com/preview/722/611/803/cartoon-key-illustration-a-bunch-of-home-keys-thumbnail.jpg' },
-  // ];
+  const { user } = useAuth();
+
+  const name = user?.username || 'User';
 
   const handleRecentListing = (item) => {
     navigation.navigate('UserPostDetails', {

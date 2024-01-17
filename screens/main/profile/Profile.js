@@ -3,13 +3,18 @@ import { View, Text, Image, StyleSheet, SafeAreaView, Pressable, ScrollView } fr
 import { FontAwesome } from '@expo/vector-icons';
 import CustomButton from '../../../components/CustomButton';
 import colors from '../../../styles/colors';
+import { useAuth } from '../../../store/authProvider';
 
 const Profile = ({navigation, route}) => {
 
-  const { updatedName, updatedEmail, updatedPhone, updatedAddress, updateProfileImage } = route.params || {};
-
+  const { user } = useAuth();
+  let { updatedName, updatedEmail, updatedPhone, updatedAddress, updateProfileImage } = route.params || {};
+  // updatedName = user?.username;
+  // updatedEmail = user?.email;
+  // updatedPhone = user?.phone.countryCode + user?.phone.number;
 
   const handleEditProfile = () => {
+
     navigation.navigate('EditProfile', {
       currentName: updatedName,
       currentEmail: updatedEmail,
